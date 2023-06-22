@@ -21,15 +21,20 @@ use App\Http\Controllers\CursoController;
 //     return view('welcome');
 // });
 
-Route::get('/', HomeController::class);
 
 Route::get('/hello', function () {
     return 'Hello World';
 });
 
-Route::get('cursos', [CursoController::class, 'index']);
-Route::get('cursos/create',[CursoController::class, 'create']);
-Route::get('cursos/{curso}', [CursoController::class, 'show']);
+Route::get('/', HomeController::class);
+
+// Podemos agrupar las rutas de un controlador
+Route::controller(CursoController::class)->group(function(){
+    Route::get('cursos', 'index');
+    Route::get('cursos/create','create');
+    Route::get('cursos/{curso}', 'show');
+});
+
 
 // El ordne importa
 // supongamos que tenemos una ruta /users/1 y otra /users/new
