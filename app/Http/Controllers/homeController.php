@@ -10,7 +10,6 @@ class HomeController extends Controller
     // El metodo __invoke se ejecuta cuando se llama al controlador
     public function __invoke()
     {
-        // return view('welcome');
-        return "Hola desde el controlador";
+        return view('home');
     }
 }

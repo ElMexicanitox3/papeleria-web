@@ -35,6 +35,11 @@ Route::controller(CursoController::class)->group(function(){
     Route::get('cursos/{curso}', 'show');
 });
 
+// Rutas sin agrupar
+// Route::get('cursos', [CursoController::class, 'index']);
+// Route::get('cursos/create',[CursoController::class, 'create']);
+// Route::get('cursos/{curso}', [CursoController::class, 'show']);
+
 
 // El ordne importa
 // supongamos que tenemos una ruta /users/1 y otra /users/new

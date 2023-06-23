@@ -8,16 +8,25 @@ class CursoController extends Controller
 {
     public function index()
     {
-        return 'Hola desde cursos';
+        return view('cursos.index');
     }
 
     public function create()
     {
-        return 'Crear nuevo curso';
+        return view('cursos.create');
     }
 
     public function show($curso)
     {
-        return 'Bienvenido al curso: ' . $curso;
+        // Forma 1 es un array asociativo
+        // return view('cursos.show', ['curso' => $curso]);
+
+        // Forma 2 es una funcion pero tiene que concordar con el nombre de la variable
+        // Que sea igual al nombre de la variable que se esta pasando
+        // return view('cursos.show', compact('curso'));
+
+        return view('cursos.show', compact('curso'));
+
+
     }
 }
