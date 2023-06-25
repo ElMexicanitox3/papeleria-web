@@ -21,10 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $curso = new Curso();
-        $curso->name = "Laravel";
-        $curso->descripcion = "El mejor framework de PHP";
-        $curso->categoria = "Desarrollo web";
-        $curso->save();
+        $this->call(CursoSeeder::class);
     }
 }
