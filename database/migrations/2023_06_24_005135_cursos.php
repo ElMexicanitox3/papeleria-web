@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('descripcion');
+            $table->string('categoria');
             $table->timestamps(); // created_at e updated_at
         });
     }
