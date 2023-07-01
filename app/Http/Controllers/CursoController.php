@@ -9,7 +9,7 @@ class CursoController extends Controller
 {
     public function index()
     {
-        $cursos = Curso::paginate();
+        $cursos = Curso::orderBy('id', 'desc')->paginate();
         return view('cursos.index', compact('cursos'));
     }
 
@@ -18,7 +18,17 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function show($id)
+    public function store(Request $request){
+        $curso = new Curso();
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+        $curso->save();
+        
+        return redirect()->route('cursos.show', $curso->id);
+    }
+
+    public function show(Curso $curso)
     {
         // Forma 1 es un array asociativo
         // return view('cursos.show', ['curso' => $curso]);
@@ -26,9 +36,22 @@ class CursoController extends Controller
         // Forma 2 es una funcion pero tiene que concordar con el nombre de la variable
         // Que sea igual al nombre de la variable que se esta pasando
         // return view('cursos.show', compact('curso'));
-        $curso = Curso::find($id);
         return view('cursos.show', compact('curso'));
 
 
+    }
+
+    public function edit(Curso $curso)
+    {
+        // return $curso;
+        return view('cursos.edit', compact('curso'));
+    }
+
+    public function update(Request $request, Curso $curso){
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+        $curso->save(); 
+        return redirect()->route('cursos.show', $curso->id);
     }
 }

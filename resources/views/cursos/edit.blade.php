@@ -5,31 +5,34 @@
 @extends('layouts.plantilla')
 
 <!-- Titulo -->
-@section('title', 'Home')
+@section('title', 'Cruso Edit')
 
 <!-- Contenido -->
 @section('content')
-    <h1>Hola desde cursos create</h1>
-    <form action="{{route('cursos.store')}}" method="POST">
+    <h1>En esta pagina podras editar el curso</h1>
+    <form action="{{route('cursos.update', $curso)}}" method="POST">
         
         {{-- el csrf es como un token --}}
         @csrf
 
+        {{-- Laravel de put --}}
+        @method('put')
+
         <label>Nombre:
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{$curso->name}}">
         </label>
         <br>
         <label>
             descripcion:
-            <textarea name="descripcion" rows="5"></textarea>
+            <textarea name="descripcion" rows="5">{{$curso->descripcion}}</textarea>
         </label>
         <br>
         <label>
             Categoria:
-            <input type="text" name="categoria">
+            <input type="text" name="categoria" value="{{$curso->categoria}}">
         </label>
         <br>
-        <button type="submit">Enviar</button>
+        <button type="submit">Actalizar Formulario</button>
     </form>
 @endsection
 <!-- Final del contenido -->
