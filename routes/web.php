@@ -30,9 +30,9 @@ Route::get('/', HomeController::class);
 
 // Podemos agrupar las rutas de un controlador
 Route::controller(CursoController::class)->group(function(){
-    Route::get('cursos', 'index');
-    Route::get('cursos/create','create');
-    Route::get('cursos/{curso}', 'show');
+    Route::get('cursos', 'index')->name('cursos.index');
+    Route::get('cursos/create','create')->name('cursos.create');
+    Route::get('cursos/{id}', 'show')->name('cursos.show');
 });
 
 // Rutas sin agrupar
