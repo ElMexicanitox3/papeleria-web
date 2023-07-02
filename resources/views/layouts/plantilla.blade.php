@@ -47,11 +47,11 @@
                 </div>
             </div>
             <div id="menu" class="hidden sm:hidden">
-                <a href="{{route('home.index')}}"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Inicio</a>
-                <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Acerca de</a>
-                <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contacto</a>
-                <a href="{{route('home.login')}}"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Registrate</a>
-                <a href="{{route('home.register')}}"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Iniciar Sesión</a>
+                <a href="{{route('home.index')}}"class="block {{$linkClasses}}">Inicio</a>
+                <a href="#"class="block {{$linkClasses}}">Acerca de</a>
+                <a href="#"class="block {{$linkClasses}}">Contacto</a>
+                <a href="{{route('home.login')}}"class="block {{$linkClasses}}">Iniciar Sesión</a>
+                <a href="{{route('home.register')}}"class="block {{$linkClasses}}">Registrate</a>
             </div>
         </div>
     </nav>
