@@ -71,7 +71,9 @@ class CursoController extends Controller
         // $curso->descripcion = $request->descripcion;
         // $curso->categoria = $request->categoria;
         // $curso->save(); 
+
         $curso->update($request->all());
+        
         return redirect()->route('cursos.show', $curso->id);
     }
 }
