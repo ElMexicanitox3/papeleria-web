@@ -19,6 +19,10 @@
 </style>
 
 <body>
+    @php
+        $linkClasses = 'text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium';
+        $buttonClasses = 'text-white bg-gray-700 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-gray-400 dark:hover:bg-gray-700 dark:focus:ring-blue-700';  
+    @endphp
     <nav class="bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -28,9 +32,11 @@
                     </a>
                 </div>
                 <div class="hidden sm:block">
-                    <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                    <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca de</a>
-                    <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
+                    <a href="#"class="{{$linkClasses}}">Inicio</a>
+                    <a href="#"class="{{$linkClasses}}">Acerca de</a>
+                    <a href="#"class="{{$linkClasses}}">Contacto</a>
+                    <a type="button" class="{{$buttonClasses}}">Iniciar Sesion</a>
+                    <a type="button" class="{{$buttonClasses}}">Registrase</a>
                 </div>
                 <div class="block sm:hidden">
                     <button type="button" id="menu-toggle" class="text-gray-600 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-700 focus:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -44,6 +50,8 @@
                 <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Inicio</a>
                 <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Acerca de</a>
                 <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+                <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Registrate</a>
+                <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Iniciar Sesión</a>
             </div>
         </div>
     </nav>
