@@ -17,3 +17,7 @@ Route::get('/', function () {
     // return view('welcome');
     return view('home.home');
 });
+
+// Route::prefix('')->group(function () {
+    
+// });
