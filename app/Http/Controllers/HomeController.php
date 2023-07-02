@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterUser;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,5 +20,24 @@ class HomeController extends Controller
     public function register()
     {
         return view('home.register');
+    }
+
+    public function newUser(RegisterUser $request)
+    {
+        return $request->all();
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password'=> 'required|min:6|confirmed'
+        // ]);
+
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email= $request->email;
+        // $user->password = Hash::make($request->password);
+        // $user->save();
+
+        return redirect()->route('home.login')->with('success', 'User created successfully.');
+    
     }
 }

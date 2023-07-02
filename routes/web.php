@@ -26,4 +26,5 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home.index');
     Route::get('login', 'login')->name('home.login');
     Route::get('register', 'register')->name('home.register');
+    Route::post('register', 'newUser')->name('home.newUser');
 });

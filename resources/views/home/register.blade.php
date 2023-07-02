@@ -17,38 +17,59 @@
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="max-w-xl w-full p-6 bg-white shadow-md">
             <h2 class="text-2xl font-semibold mb-6">Registrase</h2>
-            <form action="" method="POST">
+            <form action="{{ route('home.newUser') }}" method="POST">
 
                 @csrf
 
-                <div class="mb-4 grid grid-cols-2 gap-4">
+                <div class="mb-4">
                     <div>
                         <label for="name" class="block text-gray-700 text-sm font-medium mb-1">Nombre(s)</label>
                         <input type="text" id="name" name="name"
-                            class="w-full border-2 border-black-300 rounded-md p-2">
+                            class="w-full border-2 border-black-300 rounded-md p-2" value="{{ old('name') }}">
                     </div>
+                    @error('name')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-4">
                     <div>
                         <label for="lastname" class="block text-gray-700 text-sm font-medium mb-1">Apellidos</label>
                         <input type="text" id="lastname" name="lastname"
-                            class="w-full border-2 border-black-300 rounded-md p-2">
+                            class="w-full border-2 border-black-300 rounded-md p-2" value="{{ old('lastname') }}">
                     </div>
+                    @error('lastname')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
                 </div>
 
 
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Correo electrónico</label>
                     <input type="email" id="email" name="email"
-                        class="w-full border-2 border-black-300 rounded-md p-2">
+                        class="w-full border-2 border-black-300 rounded-md p-2" value="{{ old('email') }}">
+                    @error('email')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
                     <label for="password" class="block text-gray-700 text-sm font-medium mb-1">Contraseña</label>
-                    <input type="password" id="password" name="password" class="w-full border-2 border-black-300 rounded-md p-2">
+                    <input type="password" id="password" name="password"
+                        class="w-full border-2 border-black-300 rounded-md p-2" value="{{ old('password') }}">
+                    @error('password')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
-                    <label for="repassword" class="block text-gray-700 text-sm font-medium mb-1">Confirmar Contraseña</label>
-                    <input type="password" id="repassword" name="repassword" class="w-full border-2 border-black-300 rounded-md p-2">
+                    <label for="password_confirmation" class="block text-gray-700 text-sm font-medium mb-1">Confirmar
+                        Contraseña</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation"
+                        class="w-full border-2 border-black-300 rounded-md p-2" value="{{ old('password_confirmation') }}">
+                    @error('password_confirmation')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
                 </div>
 
 
@@ -63,6 +84,6 @@
 
         </div>
     </div>
-    
+
 @endsection
 <!-- Final del contenido -->
