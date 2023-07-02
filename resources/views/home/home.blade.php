@@ -9,6 +9,6 @@
 
 <!-- Contenido -->
 @section('content')
-    <h1>Bienvenido a la pagina principal</h1>
+    <h1>Bienvenido a la paginas principal</h1>
 @endsection
 <!-- Final del contenido -->
