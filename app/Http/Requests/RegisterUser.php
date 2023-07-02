@@ -22,10 +22,24 @@ class RegisterUser extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|alpha',
+            'lastname' => 'required|alpha',
             'email' => 'required|email|unique:users,email',
-            'password'=> 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6|same:password',
+            'password'=> 'required|min:8|confirmed',
+            'password_confirmation' => 'required|min:8|same:password',
         ];
     }
+
+    //Atributos personalizados
+    public function attributes(): array
+    {
+        return [
+            'name' => 'nombre',
+            'lastname' => 'apellido',
+            'email' => 'correo electrónico',
+            'password'=> 'contraseña',
+            'password_confirmation' => 'confirmación de contraseña',
+        ];
+    }    
+    
 }
