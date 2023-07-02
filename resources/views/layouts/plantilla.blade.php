@@ -4,55 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> @yield('title') </title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-        crossorigin="anonymous"></script>
+    <title> @yield('title')</title>
+    @vite('resources/css/app.css')
 </head>
 
-<body>
+<style>
+    .logo-img {
+    width: 190px; /* Ajusta el ancho deseado */
+    height: 50px; /* Ajusta la altura deseada */
+    margin-top: 10px; /* Ajusta el margen superior deseado */
+    margin-bottom: 10px; /* Ajusta el margen inferior deseado */
+    /* Otros estilos que desees aplicar */
+}
+</style>
 
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo"><img src="{{ asset('images/p-1.png') }}" alt="10" srcset=""></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
-            </ul>
+<body>
+    <nav class="bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 text-white">
+                        <img class="logo-img" src="{{ asset('images/p-1.png') }}" alt="5">
+                    </a>
+                </div>
+                <div class="hidden sm:block">
+                    <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                    <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca de</a>
+                    <a href="#"class="text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contacto</a>
+                </div>
+                <div class="block sm:hidden">
+                    <button type="button" id="menu-toggle" class="text-gray-600 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-700 focus:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="menu" class="hidden sm:hidden">
+                <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Acerca de</a>
+                <a href="#"class="block text-black-100 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contacto</a>
+            </div>
         </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-    </ul>
+
+    
+
 
 
     @yield('content')
     {{-- Scripts --}}
 </body>
-<!-- Script de java -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems);
-
-        var elems = document.querySelectorAll('.parallax');
-        var instances = M.Parallax.init(elems);
+    document.getElementById("menu-toggle").addEventListener("click", function() {
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
     });
-</script>
-
+  </script>
 </html>
