@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUser;
-use Illuminate\Http\Request;
+
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -24,13 +25,7 @@ class HomeController extends Controller
 
     public function newUser(RegisterUser $request)
     {
-        return $request->all();
-        // $user = new User();
-        // $user->name = $request->name;
-        // $user->email= $request->email;
-        // $user->password = Hash::make($request->password);
-        // $user->save();
-
+        User::create($request->all());
         return redirect()->route('home.login')->with('success', 'User created successfully.');
     
     }
