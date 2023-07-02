@@ -24,7 +24,6 @@ Route::controller(HomeController::class)->group(function(){
     // Route::put('cursos/{curso}', 'update')->name('cursos.update');
     
     Route::get('/', 'index')->name('home.index');
-    Route::get('home', 'index')->name('home.index');
     Route::get('login', 'login')->name('home.login');
     Route::get('register', 'register')->name('home.register');
 });
