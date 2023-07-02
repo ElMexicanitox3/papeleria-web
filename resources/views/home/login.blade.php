@@ -18,7 +18,11 @@
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="max-w-md w-full p-6 bg-white shadow-md">
             <h2 class="text-2xl font-semibold mb-6">Iniciar sesión</h2>
-            <form>
+            <form action="" method="POST">
+
+                {{-- el csrf es como un token --}}
+                @csrf
+
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Correo electrónico</label>
                     <input type="email" id="email" name="email" class="w-full border border-black-300 rounded-md p-2">
