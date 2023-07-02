@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('home.home');
-});
 
-// Route::prefix('')->group(function () {
+Route::controller(HomeController::class)->group(function(){
+    // Route::get('cursos', 'index')->name('cursos.index');
+    // Route::get('cursos/create','create')->name('cursos.create');
+    // Route::post('cursos', 'store')->name('cursos.store');
+    // Route::get('cursos/{curso}', 'show')->name('cursos.show');
+    // Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
+    // Route::put('cursos/{curso}', 'update')->name('cursos.update');
     
-// });
+    Route::get('/', 'index')->name('home.index');
+    Route::get('home', 'index')->name('home.index');
+    Route::get('login', 'login')->name('home.login');
+    Route::get('register', 'register')->name('home.register');
+});

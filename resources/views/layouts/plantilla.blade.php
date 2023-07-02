@@ -35,8 +35,8 @@
                     <a href="#"class="{{$linkClasses}}">Inicio</a>
                     <a href="#"class="{{$linkClasses}}">Acerca de</a>
                     <a href="#"class="{{$linkClasses}}">Contacto</a>
-                    <a type="button" class="{{$buttonClasses}}">Iniciar Sesion</a>
-                    <a type="button" class="{{$buttonClasses}}">Registrase</a>
+                    <a href="#" type="button" class="{{$buttonClasses}}">Iniciar Sesion</a>
+                    <a href="#" type="button" class="{{$buttonClasses}}">Registrase</a>
                 </div>
                 <div class="block sm:hidden">
                     <button type="button" id="menu-toggle" class="text-gray-600 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-700 focus:text-white px-3 py-2 rounded-md text-sm font-medium">
