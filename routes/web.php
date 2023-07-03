@@ -16,16 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::controller(HomeController::class)->group(function(){
-    // Route::get('cursos', 'index')->name('cursos.index');
-    // Route::get('cursos/create','create')->name('cursos.create');
-    // Route::post('cursos', 'store')->name('cursos.store');
-    // Route::get('cursos/{curso}', 'show')->name('cursos.show');
-    // Route::get('cursos/{curso}/edit', 'edit')->name('cursos.edit');
-    // Route::put('cursos/{curso}', 'update')->name('cursos.update');
-    
     Route::get('/', 'index')->name('home.index');
     Route::get('login', 'login')->name('home.login');
     Route::post('login', 'loginUser')->name('home.loginUser');
     Route::get('register', 'register')->name('home.register');
     Route::post('register', 'newUser')->name('home.newUser');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard.home');
+    })->name('dashboard');
 });

@@ -2,13 +2,14 @@
 <!-- Para que asi laravel pueda reconocerlo -->
 
 <!-- Plantilla -->
-@extends('layouts.public')
+@extends('layouts.private')
 
 <!-- Titulo -->
-@section('title', 'Inicio')
+@section('title', 'Dashboard')
 
 <!-- Contenido -->
 @section('content')
-    <h1>Bienvenido a la paginas principal</h1>
+
+  
 @endsection
 <!-- Final del contenido -->

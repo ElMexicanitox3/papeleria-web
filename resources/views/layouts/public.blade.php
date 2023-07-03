@@ -46,8 +46,7 @@
                     <button type="button" id="menu-toggle"
                         class="text-gray-600 hover:bg-gray-700 hover:text-white focus:outline-none focus:bg-gray-700 focus:text-white px-3 py-2 rounded-md text-sm font-medium">
                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
@@ -70,22 +69,7 @@
     @yield('content')
     {{-- Scripts --}}
 
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto py-4 px-6 flex items-center justify-between">
-            <p class="text-sm">© 2023 Mi Empresa. Todos los derechos reservados. - Puto el que lo lea</p>
-            <div class="flex space-x-4">
-                <a href="#" class="text-white hover:text-gray-300">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="text-white hover:text-gray-300">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="text-white hover:text-gray-300">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+    @extends('layouts.footer')
 
 </body>
 <script>

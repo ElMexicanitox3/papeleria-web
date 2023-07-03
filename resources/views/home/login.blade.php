@@ -2,10 +2,10 @@
 <!-- Para que asi laravel pueda reconocerlo -->
 
 <!-- Plantilla -->
-@extends('layouts.plantilla')
+@extends('layouts.public')
 
 <!-- Titulo -->
-@section('title', 'Home')
+@section('title', 'Login')
 
 <!-- Contenido -->
 @section('content')

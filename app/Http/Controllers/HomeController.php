@@ -29,19 +29,22 @@ class HomeController extends Controller
         return view('home.login');
     }
 
+
     public function loginUser(LoginUser $request){
 
-        
-        // Login with email and password
-        $credentials = $request->only('email', 'password');
-        $user = User::where('email', $request->email)->where('active', 1)->where('deleted', 0)->first();
-        if (!Auth::attempt($credentials)) {
+        $user = User::where('email', $request->email)
+        ->where('active', 1)
+        ->where('deleted', 0)
+        ->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
             toastr()->error('Usuario o contraseña incorrectos');
             return redirect()->back();
         }
 
-        dd($user);
+        Auth::login($user);
 
+        return redirect()->route('dashboard');
     }
 
     public function register()
