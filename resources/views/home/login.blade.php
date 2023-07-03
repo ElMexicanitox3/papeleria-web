@@ -18,18 +18,24 @@
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="max-w-md w-full p-6 bg-white shadow-md">
             <h2 class="text-2xl font-semibold mb-6">Iniciar sesión</h2>
-            <form action="" method="POST">
+            <form action="{{route('home.loginUser')}}" method="POST">
 
                 {{-- el csrf es como un token --}}
                 @csrf
 
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Correo electrónico</label>
-                    <input type="email" id="email" name="email" class="w-full border border-black-300 rounded-md p-2">
+                    <input type="email" id="email" name="email" class="w-full border border-black-300 rounded-md p-2" value="{{old('email')}}">
+                    @error('email')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block text-gray-700 text-sm font-medium mb-1">Contraseña</label>
                     <input type="password" id="password" name="password" class="w-full border border-black-300 rounded-md p-2">
+                    @error('password')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="{{$buttonClasses}}">Iniciar sesión</button>
             </form>
@@ -44,8 +50,6 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection
 <!-- Final del contenido -->
