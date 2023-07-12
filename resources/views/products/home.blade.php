@@ -41,7 +41,7 @@
                             </a>
 
                             <!-- Botón Editar -->
-                            <a href="" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{route('products.edit', $product->uuid)}}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
                               Editar
                             </a>
 

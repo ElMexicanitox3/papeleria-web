@@ -24,4 +24,10 @@ class ProductsController extends Controller
         $product = Product::create($request->all());
         return redirect()->route('products.home');
     }
+
+    public function edit($uuid)
+    {
+        $product = Product::where('uuid', $uuid)->first();
+        return view('products.edit', compact('product'));
+    }
 }
