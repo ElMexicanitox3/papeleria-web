@@ -55,7 +55,7 @@ class HomeController extends Controller
     public function newUser(RegisterUser $request)
     {
         User::create($request->all());
-        return redirect()->route('home.login')->with('success', 'User created successfully.');
+        return redirect()->route('home.login')->with('success', 'Usuario creado correctamente.');
     
     }
 }

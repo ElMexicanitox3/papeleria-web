@@ -14,9 +14,11 @@
         <h2 class="mb-4 text-xl font-bold">Editar Producto - {{$product->name}}</h2>
     </div>
     <div class="overflow-x-auto">
-        <form action="{{route("products.update")}}" method="post">
+        <form action="{{route("products.update", $product)}}" method="post">
 
             @csrf
+
+            @method('put')
             
             <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
 
