@@ -18,6 +18,8 @@ class ProductFactory extends Factory
     {
         return [
             'uuid' => $this->faker->uuid,
+            'barcode' => $this->faker->randomNumber(8),
+            'model' => $this->faker->text,
             'name' => $this->faker->name,
             'description' => $this->faker->text,
         ];

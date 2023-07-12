@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @yield('title')</title>
     @vite('resources/css/app.css')
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 
 <style>
@@ -58,20 +59,32 @@
         <div id="sidebar" class="flex flex-col flex-shrink-0 w-64 bg-white shadow">
             <!-- Logo o título del sidebar -->
             <div class="flex items-center justify-center h-16 bg-gray-200">
-                <span class="text-xl font-bold">Sidebar</span>
+                <span class="text-xl font-bold">Bienvenido</span>
             </div>
 
             <!-- Enlaces del sidebar -->
-            <div class="flex flex-col flex-grow p-4">
-                <!-- Enlaces aquí -->
+            <div class="flex flex-col flex-grow items-center p-4">
+
+                <a href="{{ route('dashboard') }}" class="flex items-center w-full {{ request()->is('dashboard') ? 'bg-indigo-100 ' : 'hover:text-indigo-600' }}">
+                    <span class="material-icons">dashboard</span>
+                    <span class="ml-2 text-lg">Dashboard</span>
+                </a>
+
+                <a href="{{ route('products.home') }}" class="flex items-center w-full mt-2 {{ (request()->routeIs('products.home') || str_starts_with(request()->route()->getName(), 'products.create')) ? 'bg-indigo-100' : 'hover:text-indigo-600' }}">
+                    <span class="material-icons">inventory_2</span>
+                    <span class="ml-2 text-lg">Productos</span>
+                  </a>
+                  
+                
             </div>
+
         </div>
 
         <!-- Contenido principal -->
         <div class="flex flex-col flex-grow">
             <!-- Contenido de la página -->
             <div class="p-4">
-                <!-- Contenido principal de la página -->
+                @yield('content')
             </div>
         </div>
     </div>
@@ -90,10 +103,10 @@
     function checkScreenWidth() {
         if (window.innerWidth < 768) { // Cambia este valor según tus necesidades
             sidebar.classList.add('hidden');
-            close-session.classList.add('hidden');
+            close - session.classList.add('hidden');
         } else {
             sidebar.classList.remove('hidden');
-            close-session.classList.remove('hidden');
+            close - session.classList.remove('hidden');
         }
     }
 

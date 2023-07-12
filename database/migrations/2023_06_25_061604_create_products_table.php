@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->integer('store')->nullable();
-            $table->integer('barcode')->nullable();
+            $table->string('barcode', 255)->nullable();
+            $table->string('model')->nullable();
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('image')->nullable();

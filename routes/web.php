@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard.home');
     })->name('dashboard');
+
+    Route::controller(ProductsController::class)->group(function(){
+        Route::get('products', 'index')->name('products.home');
+        Route::get('products/create', 'create')->name('products.create');
+        Route::post('products/create', 'store')->name('products.store');
+    });
 });

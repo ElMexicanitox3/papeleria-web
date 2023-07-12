@@ -9,7 +9,7 @@
 
 <!-- Contenido -->
 @section('content')
-
+    {{-- <p>Contenido del dashboard</p> --}}
   
 @endsection
 <!-- Final del contenido -->
