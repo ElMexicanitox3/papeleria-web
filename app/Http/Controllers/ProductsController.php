@@ -30,4 +30,11 @@ class ProductsController extends Controller
         $product = Product::where('uuid', $uuid)->first();
         return view('products.edit', compact('product'));
     }
+
+    public function update(Products $request, $uuid)
+    {
+        $product = Product::where('uuid', $uuid)->first();
+        $product->update($request->all());
+        return redirect()->route('products.home');
+    }
 }

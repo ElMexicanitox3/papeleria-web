@@ -34,5 +34,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('products/create', 'create')->name('products.create');
         Route::post('products/create', 'store')->name('products.store');
         Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
+        Route::post('products/edit/{uuid}', 'update')->name('products.update');
     });
 });

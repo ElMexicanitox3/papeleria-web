@@ -14,7 +14,7 @@
         <h2 class="mb-4 text-xl font-bold">Editar Producto - {{$product->name}}</h2>
     </div>
     <div class="overflow-x-auto">
-        <form action="{{route("products.store")}}" method="post">
+        <form action="{{route("products.update")}}" method="post">
 
             @csrf
             
@@ -22,7 +22,7 @@
 
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 text-sm font-medium mb-1">Nombre</label>
-                    <input type="text" id="name" name="name" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('name')}}">
+                    <input type="text" id="name" name="name" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('categoria', $product->name)}}">
                     @error('name')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror
@@ -30,7 +30,7 @@
 
                 <div class="mb-4">
                     <label for="barcode" class="block text-gray-700 text-sm font-medium mb-1">Codigo de barras</label>
-                    <input type="number" id="barcode" name="barcode" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('barcode')}}">
+                    <input type="number" id="barcode" name="barcode" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('categoria', $product->barcode)}}">
                     @error('barcode')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror
@@ -38,7 +38,7 @@
                
                 <div class="mb-4">
                     <label for="model" class="block text-gray-700 text-sm font-medium mb-1">Modelo</label>
-                    <input type="text" id="model" name="model" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('model')}}">
+                    <input type="text" id="model" name="model" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('categoria', $product->model)}}">
                     @error('model')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror
@@ -46,7 +46,7 @@
                 
                 <div class="mb-4">
                     <label for="description" class="block text-gray-700 text-sm font-medium mb-1">Descripción</label>
-                    <textarea name="description" id="description" cols="30" rows="10" class="w-full border-2 border-black-300 rounded-md p-2">{{old('description')}}</textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" class="w-full border-2 border-black-300 rounded-md p-2">{{old('description', $product->description)}}</textarea>
                     @error('description')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror
