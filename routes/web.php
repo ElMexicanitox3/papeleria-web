@@ -35,5 +35,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('products/create', 'store')->name('products.store');
         Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
         Route::put('products/edit/{uuid}', 'update')->name('products.update');
+        Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
+        Route::post('products/activate/{uuid}', 'activate')->name('products.activate');
     });
 });

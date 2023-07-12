@@ -58,7 +58,7 @@
             <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
 
                 <a href="{{ route('products.home') }}" class="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 text-center">Regresar</a>
-                <button class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Guardar</button>
+                <button class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600" type="submit">Guardar</button>
 
             </div>
 
