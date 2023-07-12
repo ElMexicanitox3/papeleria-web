@@ -31,8 +31,9 @@ class ProductsController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $uuid)
     {
+        $product = Product::where('uuid', $uuid)->first();
         $product->update($request->all());
         return redirect()->route('products.home')->with('success', 'Producto actualizado.');
     }

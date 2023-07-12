@@ -14,7 +14,7 @@
         <h2 class="mb-4 text-xl font-bold">Editar Producto - {{$product->name}}</h2>
     </div>
     <div class="overflow-x-auto">
-        <form action="{{route("products.update", $product)}}" method="post">
+        <form action="{{route("products.update", $product->uuid)}}" method="post">
 
             @csrf
 
