@@ -23,7 +23,7 @@ class Products extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'barcode' => 'required|string',
+            'barcode' => 'required|string|max:255|unique:products,barcode',
             'model' => 'nullable|string',
             'description' => 'nullable|string',
         ];
@@ -39,6 +39,7 @@ class Products extends FormRequest
         return [
             'name.required' => 'El nombre del producto es requerido',
             'barcode.required' => 'El código de barras es requerido',
+            'barcode.unique' => 'El código de barras ya existe',
         ];
     }
 }

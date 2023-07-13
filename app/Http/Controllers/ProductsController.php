@@ -34,6 +34,12 @@ class ProductsController extends Controller
     public function update(Request $request, $uuid)
     {
         $product = Product::where('uuid', $uuid)->first();
+        // Validate if the barcode is different, if it is, validate that it is unique
+        if ($product->barcode != $request->barcode) {
+            $request->validate([
+                'barcode' => 'required|string|max:255|unique:products,barcode',
+            ]);
+        }
         $product->update($request->all());
         return redirect()->route('products.home')->with('success', 'Producto actualizado.');
     }
