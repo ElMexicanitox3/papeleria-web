@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +38,15 @@ Route::middleware(['auth'])->group(function () {
         Route::put('products/edit/{uuid}', 'update')->name('products.update');
         Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
         Route::post('products/activate/{uuid}', 'activate')->name('products.activate');
+    });
+
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('category', 'index')->name('category.home');
+        Route::get('category/create', 'create')->name('category.create');
+        Route::post('category/create', 'store')->name('category.store');
+        // Route::get('category/edit/{uuid}', 'edit')->name('category.edit');
+        // Route::put('category/edit/{uuid}', 'update')->name('category.update');
+        // Route::post('category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
+        // Route::post('category/activate/{uuid}', 'activate')->name('category.activate');
     });
 });

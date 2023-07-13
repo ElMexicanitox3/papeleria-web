@@ -1,0 +1,83 @@
+<!-- Es necesario agregar al archivo blade ejemplo "home.blade.php" -->
+<!-- Para que asi laravel pueda reconocerlo -->
+
+<!-- Plantilla -->
+@extends('layouts.private')
+
+<!-- Titulo -->
+@section('title', 'Categorias')
+
+<!-- Contenido -->
+@section('content')
+    <div class="bg-white rounded-md shadow-md border">
+        <div class="p-3 bg-gray-200">
+            <h2 class="mb-4 text-xl font-bold">Categorias</h2>
+        </div>
+        <div class="py-6 px-2">
+            <a href="{{ route('category.create') }}"
+                class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Agregar Categoria</a>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-400">
+                <thead>
+                    <tr>
+                        <th class="">Nombre</th>
+                        <th class="">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas de la tabla -->
+                    @foreach ($categories as $category)
+                        <tr>
+                            <th>{{ $category->name }}</th>
+                            <th>
+
+                                {{-- <a href="{{ route('products.edit', $product->uuid) }}"
+                                    class="p-2 rounded-md bg-blue-500 hover:bg-blue-600 flex items-center mr-2">
+                                    <span class="material-icons text-white mr-1">edit</span>
+                                    <span class="text-white">Editar</span>
+                                </a> --}}
+
+                                {{-- @if ($product->active)
+                                    <form action="{{ route('products.desactivate', $product->uuid) }}" method="post">
+
+                                        @csrf
+
+                                        <input type="hidden" name="uuid" id="uuid"
+                                            value="{{ $product->uuid }}">
+
+                                        <!-- Boton de desactivar -->
+                                        <button type="submit"
+                                            class="p-2 rounded-md bg-red-500 hover:bg-red-600 flex items-center mr-2">
+                                            <span class="material-icons text-white mr-1">highlight_off</span>
+                                            <span class="text-white">Desactivar</span>
+                                        </button>
+
+                                    </form>
+                                @else
+                                    <form action="{{ route('products.activate', $product->uuid) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="uuid" id="uuid"
+                                            value="{{ $product->uuid }}">
+                                        <button type="submit"
+                                            class="p-2 rounded-md bg-green-500 hover:bg-green-600 flex items-center mr-2">
+                                            <span class="material-icons text-white mr-1">check_circle</span>
+                                            <span class="text-white">Activar</span>
+                                        </button>
+                                    </form>
+                                @endif --}}
+
+                            </th>
+                        </tr>
+                    @endforeach
+                    <!-- Otras filas... -->
+                </tbody>
+            </table>
+
+        </div>
+
+        {{ $categories->links() }}
+
+    </div>
+@endsection
+<!-- Final del contenido -->

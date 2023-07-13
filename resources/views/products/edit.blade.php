@@ -5,7 +5,7 @@
 @extends('layouts.private')
 
 <!-- Titulo -->
-@section('title', 'Crear Producto')
+@section('title', 'Editar Producto')
 
 <!-- Contenido -->
 @section('content')

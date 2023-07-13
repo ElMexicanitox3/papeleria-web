@@ -65,17 +65,25 @@
             <!-- Enlaces del sidebar -->
             <div class="flex flex-col flex-grow items-center p-4">
 
-                <a href="{{ route('dashboard') }}" class="flex items-center w-full {{ request()->is('dashboard') ? 'bg-indigo-100 ' : 'hover:text-indigo-600' }}">
+                <a href="{{ route('dashboard') }}"
+                    class="flex items-center w-full {{ request()->is('dashboard') ? 'bg-indigo-100 ' : 'hover:text-indigo-600' }}">
                     <span class="material-icons">dashboard</span>
                     <span class="ml-2 text-lg">Dashboard</span>
                 </a>
 
-                <a href="{{ route('products.home') }}" class="flex items-center w-full mt-2 {{ (request()->routeIs('products.home') || str_starts_with(request()->route()->getName(), 'products.create')) ? 'bg-indigo-100' : 'hover:text-indigo-600' }}">
+                <a href="{{ route('products.home') }}"
+                    class="flex items-center w-full mt-2 {{ request()->routeIs('products.home') ||str_starts_with(request()->route()->getName(),'products.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
                     <span class="material-icons">inventory_2</span>
                     <span class="ml-2 text-lg">Productos</span>
-                  </a>
-                  
-                
+                </a>
+
+                <a href="{{ route('category.home') }}"
+                    class="flex items-center w-full mt-2 {{ request()->routeIs('category.home') ||str_starts_with(request()->route()->getName(),'category.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                    <span class="material-icons">category</span>
+                    <span class="ml-2 text-lg">Categorias</span>
+                </a>
+
+
             </div>
 
         </div>
