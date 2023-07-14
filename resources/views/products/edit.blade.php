@@ -9,11 +9,10 @@
 
 <!-- Contenido -->
 @section('content')
-<div class="bg-white rounded-md shadow-md border">
-    <div class="p-3 bg-gray-200">
-        <h2 class="mb-4 text-xl font-bold">Editar Producto - {{$product->name}}</h2>
-    </div>
-    <div class="overflow-x-auto">
+
+    @section('titleCard', 'Editar Producto - ' . $product->name)
+
+    @section('contentCard')
         <form action="{{route("products.update", $product->uuid)}}" method="post">
 
             @csrf
@@ -37,7 +36,7 @@
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror
                 </div>
-               
+            
                 <div class="mb-4">
                     <label for="model" class="block text-gray-700 text-sm font-medium mb-1">Modelo</label>
                     <input type="text" id="model" name="model" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('categoria', $product->model)}}">
@@ -64,11 +63,10 @@
 
             </div>
 
-
-
         </form>
-    </div>
-      
-</div>
+    @endsection
+
+    @include('layouts.components.card')
+  
 @endsection
 <!-- Final del contenido -->

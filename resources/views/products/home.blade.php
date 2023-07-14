@@ -94,7 +94,7 @@
         {{ $products->links() }}
     @endsection
 
-    @include('layouts.card')
+    @include('layouts.components.card')
     
 @endsection
 <!-- Final del contenido -->
