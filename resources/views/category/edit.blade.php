@@ -1,16 +1,14 @@
-<!-- Es necesario agregar al archivo blade ejemplo "home.blade.php" -->
-<!-- Para que asi laravel pueda reconocerlo -->
 
 <!-- Plantilla -->
 @extends('layouts.private')
 
 <!-- Titulo -->
-@section('title', 'Editar Producto')
+@section('title', 'Editar Categoria')
 
 <!-- Contenido -->
 @section('content')
 
-    @section('titleCard', 'Editar Producto - ' . $category->name)
+    @section('titleCard', 'Editar Categoria - ' . $category->name)
 
     @section('contentCard')
         <form action="{{route("category.update", $category->uuid)}}" method="post">

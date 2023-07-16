@@ -1,6 +1,3 @@
-<!-- Es necesario agregar al archivo blade ejemplo "home.blade.php" -->
-<!-- Para que asi laravel pueda reconocerlo -->
-
 <!-- Plantilla -->
 @extends('layouts.public')
 

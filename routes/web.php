@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,5 +49,10 @@ Route::middleware(['auth'])->group(function () {
         Route::put('category/edit/{uuid}', 'update')->name('category.update');
         Route::post('category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
         Route::post('category/activate/{uuid}', 'activate')->name('category.activate');
+    });
+
+    Route::controller(SubcategoryController::class)->group(function(){
+        Route::get('subcategory', 'index')->name('subcategory.home');
+        Route::get('subcategory/create', 'create')->name('subcategory.create');
     });
 });

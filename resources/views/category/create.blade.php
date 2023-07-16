@@ -1,16 +1,13 @@
-<!-- Es necesario agregar al archivo blade ejemplo "home.blade.php" -->
-<!-- Para que asi laravel pueda reconocerlo -->
-
 <!-- Plantilla -->
 @extends('layouts.private')
 
 <!-- Titulo -->
-@section('title', 'Crear Producto')
+@section('title', 'Crear Categoria')
 
 <!-- Contenido -->
 @section('content')
 
-    @section('titleCard', 'Crear Producto')
+    @section('titleCard', 'Crear Categoria')
 
     @section('contentCard')
         <form action="{{route("category.store")}}" method="post">
