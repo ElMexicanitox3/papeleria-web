@@ -44,9 +44,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('category', 'index')->name('category.home');
         Route::get('category/create', 'create')->name('category.create');
         Route::post('category/create', 'store')->name('category.store');
-        // Route::get('category/edit/{uuid}', 'edit')->name('category.edit');
-        // Route::put('category/edit/{uuid}', 'update')->name('category.update');
-        // Route::post('category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
-        // Route::post('category/activate/{uuid}', 'activate')->name('category.activate');
+        Route::get('category/edit/{uuid}', 'edit')->name('category.edit');
+        Route::put('category/edit/{uuid}', 'update')->name('category.update');
+        Route::post('category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
+        Route::post('category/activate/{uuid}', 'activate')->name('category.activate');
     });
 });

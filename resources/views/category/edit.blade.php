@@ -10,20 +10,20 @@
 <!-- Contenido -->
 @section('content')
 
-    @section('titleCard', 'Editar Producto - ' . $product->name)
+    @section('titleCard', 'Editar Producto - ' . $category->name)
 
     @section('contentCard')
-        <form action="{{route("products.update", $product->uuid)}}" method="post">
+        <form action="{{route("category.update", $category->uuid)}}" method="post">
 
             @csrf
 
             @method('put')
             
-            <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div class="p-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
 
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 text-sm font-medium mb-1">Nombre</label>
-                    <input type="text" id="name" name="name" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('categoria', $product->name)}}">
+                    <input type="text" id="name" name="name" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('categoria', $category->name)}}">
                     @error('name')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror

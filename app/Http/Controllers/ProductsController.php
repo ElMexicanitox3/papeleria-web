@@ -41,29 +41,29 @@ class ProductsController extends Controller
             ]);
         }
         $product->update($request->all());
-        return redirect()->route('products.home')->with('success', 'Producto actualizado.');
+        return redirect()->back()->with('success', 'Producto actualizado.');
     }
 
     public function desactivate(Request $request)
     {
         if (!$request->uuid) {
-            return redirect()->route('products.home')->with('error', 'No se ha encontrado el producto.');
+            return redirect()->back()->with('error', 'No se ha encontrado el producto.');
         }
         $product = Product::where('uuid', $request->uuid)->first();
         $product->active = 0;
         $product->save();
-        return redirect()->route('products.home')->with('success', 'Producto desactivado.');
+        return redirect()->back()->with('success', 'Producto desactivado.');
     }
 
     public function activate(Request $request)
     {
         if (!$request->uuid) {
-            return redirect()->route('products.home')->with('error', 'No se ha encontrado el producto.');
+            return redirect()->back()->with('error', 'No se ha encontrado el producto.');
         }
         $product = Product::where('uuid', $request->uuid)->first();
         $product->active = 1;
         $product->save();
-        return redirect()->route('products.home')->with('success', 'Producto activado.');
+        return redirect()->back()->with('success', 'Producto activado.');
     }
 
 }
