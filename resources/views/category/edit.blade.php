@@ -9,14 +9,10 @@
 
 <!-- Contenido -->
 @section('content')
-<div class="bg-white rounded-md shadow-md border">
 
-    <div class="p-3 bg-gray-200">
-        <h2 class="mb-4 text-xl font-bold">Editar Categoria - {{$product->name}}</h2>
-    </div>
+    @section('titleCard', 'Editar Producto - ' . $product->name)
 
-    <div class="overflow-x-auto">
-
+    @section('contentCard')
         <form action="{{route("products.update", $product->uuid)}}" method="post">
 
             @csrf
@@ -45,8 +41,9 @@
 
 
         </form>
-    </div>
-      
-</div>
+    @endsection
+
+    @include('layouts.components.card')
+
 @endsection
 <!-- Final del contenido -->

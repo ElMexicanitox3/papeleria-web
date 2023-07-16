@@ -9,11 +9,10 @@
 
 <!-- Contenido -->
 @section('content')
-<div class="bg-white rounded-md shadow-md border">
-    <div class="p-3 bg-gray-200">
-        <h2 class="mb-4 text-xl font-bold">Crear Producto</h2>
-    </div>
-    <div class="overflow-x-auto">
+
+    @section('titleCard', 'Crear Producto')
+
+    @section('contentCard')
         <form action="{{route("category.store")}}" method="post">
 
             @csrf
@@ -41,8 +40,10 @@
 
 
         </form>
-    </div>
-      
-</div>
+    @endsection
+
+    @include('layouts.components.card')
+
+
 @endsection
 <!-- Final del contenido -->
