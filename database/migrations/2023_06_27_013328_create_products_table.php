@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->integer('store')->nullable();
-            $table->integer('category')->nullable();
+            $table->foreignId('subcategory')->constrained('subcategory')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('default_product')->default(0);
             $table->string('barcode', 255)->unique();
             $table->string('model')->nullable();

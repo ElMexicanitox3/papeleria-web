@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('storage', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->integer('store_branch')->nullable();
+            $table->foreignId('store_branch')->constrained('store_branches')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('description')->nullable();
             $table->boolean('active')->default(1);

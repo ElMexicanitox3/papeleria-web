@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('price_history', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->integer('store_branch');
-            $table->integer('product');
-            $table->integer('iva');
+            $table->foreignId('store')->constrained('store')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('product')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('iva')->constrained('iva_history')->onDelete('cascade')->onUpdate('cascade');
             $table->double('original_price');
             $table->boolean('has_iva')->default(0);
             $table->double('price');

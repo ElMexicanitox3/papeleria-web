@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subcategory', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->integer('category')->nullable();
+            $table->foreignId('category')->nullable()->constrained('category')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->boolean('active')->default(1);
             $table->boolean('deleted')->default(0);
