@@ -18,8 +18,8 @@
         <table class="min-w-full divide-y divide-gray-400">
             <thead>
                 <tr>
-                    <th class="">Nombre</th>
                     <th class="">Categoria</th>
+                    <th class="">Nombre</th>
                     <th class="">Acciones</th>
                 </tr>
             </thead>
@@ -27,6 +27,7 @@
                 <!-- Filas de la tabla -->
                 @foreach ($subcategory as $category)
                     <tr>
+                        <th>{{ $category->category }}</th>
                         <th>{{ $category->name }}</th>
                         <th>
                             <div class="flex justify-center items-center">

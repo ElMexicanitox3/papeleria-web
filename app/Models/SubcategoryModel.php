@@ -15,6 +15,7 @@ class SubcategoryModel extends Model
 
     protected $fillable = [
         'uuid',
+        'category',
         'name',
     ];
 

@@ -10,23 +10,19 @@
     @section('titleCard', 'Crear SubCategoria')
 
     @section('contentCard')
-        <form action="{{route("category.store")}}" method="post">
+        <form action="{{route("subcategory.store")}}" method="post">
 
             @csrf
             
             <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
 
                 <div class="mb-4">
-                    <select class="js-example-basic-single" name="state">
-                        <option value="AL">Alabama</option>
-                        <option value="WY">Wyoming</option>
-                      </select>
                     <!-- Select with the categories -->
                     <label for="category" class="block text-gray-700 text-sm font-medium mb-1">Categoria</label>
                     <select name="category" id="category" class="w-full border-2 border-black-300 rounded-md p-2 select2">
                         <option value="">Selecciona una categoria</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->uuid }}">{{ $category->name }}</option>
+                            <option value="{{ $category->uuid }}" @if (old('category') == $category->uuid ) selected="selected" @endif>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     @error('category')

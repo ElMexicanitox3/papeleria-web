@@ -7,8 +7,9 @@
     <title> @yield('title')</title>
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
 
 <style>
@@ -85,6 +86,13 @@
                     <span class="ml-2 text-lg">Categorias</span>
                 </a>
 
+                <a href="{{ route('subcategory.home') }}"
+                    class="flex items-center w-full mt-2 {{ request()->routeIs('subcategory.home') ||str_starts_with(request()->route()->getName(),'subcategory.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                    <span class="material-icons">category</span>
+                    <span class="ml-2 text-lg">Subcategorias</span>
+                </a>
+
+
 
             </div>
 
@@ -108,7 +116,7 @@
 <script>
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
-        $('.js-example-basic-single').select2();
+        $('.select2').select2();
     });
     const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
     const sidebar = document.getElementById('sidebar');
