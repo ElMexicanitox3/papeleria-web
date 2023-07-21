@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\CategoryModel;
+
 
 
 class SubcategoryModel extends Model
@@ -15,9 +17,14 @@ class SubcategoryModel extends Model
 
     protected $fillable = [
         'uuid',
-        'category',
+        'category_id',
         'name',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(CategoryModel::class, 'category_id');
+    }
 
     protected static function boot()
     {

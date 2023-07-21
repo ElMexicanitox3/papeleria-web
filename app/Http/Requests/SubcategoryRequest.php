@@ -22,7 +22,7 @@ class SubcategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:subcategory,name',
             'category' => 'required|uuid|exists:category,uuid',
         ];
     }
@@ -33,6 +33,7 @@ class SubcategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'name.unique' => 'El nombre de subcategoría ya existe',
             'name.required' => 'El nombre de subcategoría es requerida',
             'category.required' => 'Seleccione una categoría',
         ];

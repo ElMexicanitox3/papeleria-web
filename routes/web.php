@@ -55,5 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('subcategory', 'index')->name('subcategory.home');
         Route::get('subcategory/create', 'create')->name('subcategory.create');
         Route::post('subcategory/create', 'store')->name('subcategory.store');
+        Route::get('subcategory/edit/{uuid}', 'edit')->name('subcategory.edit');
+        Route::put('subcategory/edit/{uuid}', 'update')->name('subcategory.update');
     });
 });
