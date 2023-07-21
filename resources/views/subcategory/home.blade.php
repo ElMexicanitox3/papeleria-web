@@ -11,7 +11,7 @@
 
     @section('buttonsCard')
         <a href="{{ route('subcategory.create') }}"
-            class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Agregar SubCategoria</a>
+            class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Agregar Sub categoria</a>
     @endsection
 
     @section('contentCard')
