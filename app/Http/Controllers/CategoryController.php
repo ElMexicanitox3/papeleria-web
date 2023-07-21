@@ -27,16 +27,16 @@ class CategoryController extends Controller
         return view('category.edit', compact('category'));
     }
 
-    public function update(Request $request, $uuid){
-        $category = CategoryModel::where('uuid', $uuid)->first();
-        // Validate if the name is different, if it is, validate that it is unique
-        if ($category->name != $request->name) {
-            $request->validate([
-                'name' => 'required|string|max:255|unique:category,name',
-            ]);
+    public function update(CategoryRequest $request, $uuid){
+        // Si la categoria es diferente a la que esta en la base de datos entonces buscamos si existe para evitar duplicados
+        $category = CategoryModel::where('uuid', '!=', $uuid)->where('name', $request->name)->first();
+        if($category){
+            return redirect()->route('category.edit', $uuid)->with('error', 'La categoría ya existe');
         }
-        $category->update($request->all());
-        return redirect()->back()->with('success', 'Producto actualizado.');
+        $category = CategoryModel::where('uuid', $uuid)->first();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('category.home')->with('success', 'Producto actualizado.');
     }
 
     public function desactivate(Request $request)

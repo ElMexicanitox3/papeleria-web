@@ -33,4 +33,17 @@ class CategoryRequest extends FormRequest
             'name' => 'nombre de la categoría',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     */
+
+    public function messages(): array
+    {
+        return [
+            'name.unique' => 'El nombre de la categoría ya existe',
+            'name.required' => 'El nombre de la categoría es requerida',
+            'name.regex' => 'El nombre de la categoría solo puede contener letras',
+        ];
+    }
 }
