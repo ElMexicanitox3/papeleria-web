@@ -21,11 +21,13 @@
                 <div class="mb-4">
                     <label for="category" class="block text-gray-700 text-sm font-medium mb-1">Categoria</label>
                     <select name="category" id="category" class="w-full border-2 border-black-300 rounded-md p-2 select2">
-                        <option value="">Selecciona una categoria</option>
+                        <option value="">Selecciona una categoría</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->uuid }}" @if (old('category') == $category->category_id ) selected="selected" @endif>{{ $category->name }}</option>
+                            <option value="{{ $category->uuid }}" @if ($subcategory->category_id == $category->id) selected="selected" @endif>
+                                {{ $category->name }}
+                            </option>
                         @endforeach
-                    </select>
+                    </select>                    
                     @error('category')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror

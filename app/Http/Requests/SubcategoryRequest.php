@@ -52,6 +52,9 @@ class SubcategoryRequest extends FormRequest
     {
         return [
             'name.unique' => 'El nombre de subcategoría ya existe',
+            'name.max' => 'El nombre de subcategoría no debe ser mayor a :max caracteres',
+            'name.string' => 'El nombre de subcategoría debe ser una cadena de caracteres',
+            'name.exists' => 'La categoría no existe',
             'name.required' => 'El nombre de subcategoría es requerida',
             'category.required' => 'Seleccione una categoría',
         ];
