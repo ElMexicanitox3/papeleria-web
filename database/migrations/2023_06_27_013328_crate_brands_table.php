@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('store_id')->constrained('store')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('store_id')->nullable();
+            $table->foreign('store_id')->references('id')->on('store')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name', 255)->unique();
             $table->text('description')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
+        
     }
 
     /**

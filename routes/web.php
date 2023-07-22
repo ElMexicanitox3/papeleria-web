@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoryController;
@@ -31,16 +32,16 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard.home');
     })->name('dashboard');
 
-    Route::controller(ProductsController::class)->group(function(){
-        Route::get('products', 'index')->name('products.home');
-        Route::get('products/create', 'create')->name('products.create');
-        Route::post('products/create', 'store')->name('products.store');
-        Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
-        Route::put('products/edit/{uuid}', 'update')->name('products.update');
-        Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
-        Route::post('products/activate/{uuid}', 'activate')->name('products.activate');
+    Route::controller(BrandsController::class)->group(function(){
+        Route::get('brands', 'index')->name('brands.home');
+        Route::get('brands/create', 'create')->name('brands.create');
+        Route::post('brands/create', 'store')->name('brands.store');
+        Route::get('brands/edit/{uuid}', 'edit')->name('brands.edit');
+        Route::put('brands/edit/{uuid}', 'update')->name('brands.update');
+        Route::post('brands/desactivate/{uuid}', 'desactivate')->name('brands.desactivate');
+        Route::post('brands/activate/{uuid}', 'activate')->name('brands.activate');
     });
-    
+
     Route::controller(CategoryController::class)->group(function(){
         Route::get('category', 'index')->name('category.home');
         Route::get('category/create', 'create')->name('category.create');
@@ -61,4 +62,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('subcategory/activate/{uuid}', 'activate')->name('subcategory.activate');
         Route::get('subcategory/getsucategory/{uuid}', 'getSubcategories')->name('subcategory.getSubcategories');
     });
+
+    Route::controller(ProductsController::class)->group(function(){
+        Route::get('products', 'index')->name('products.home');
+        Route::get('products/create', 'create')->name('products.create');
+        Route::post('products/create', 'store')->name('products.store');
+        Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
+        Route::put('products/edit/{uuid}', 'update')->name('products.update');
+        Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
+        Route::post('products/activate/{uuid}', 'activate')->name('products.activate');
+    });
+    
 });

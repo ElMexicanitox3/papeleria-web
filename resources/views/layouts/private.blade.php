@@ -84,10 +84,10 @@
                     <span class="ml-2 text-lg">Dashboard</span>
                 </a>
 
-                <a href="{{ route('products.home') }}"
-                    class="flex items-center w-full mt-2 {{ request()->routeIs('products.home') ||str_starts_with(request()->route()->getName(),'products.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
-                    <span class="material-icons">inventory_2</span>
-                    <span class="ml-2 text-lg">Productos</span>
+                <a href="{{ route('brands.home') }}"
+                    class="flex items-center w-full mt-2 {{ request()->routeIs('brands.home') ||str_starts_with(request()->route()->getName(),'brands.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                    <span class="material-icons">subtitles</span>
+                    <span class="ml-2 text-lg">Marcas</span>
                 </a>
 
                 <a href="{{ route('category.home') }}"
@@ -101,6 +101,13 @@
                     <span class="material-icons">category</span>
                     <span class="ml-2 text-lg">Subcategorias</span>
                 </a>
+
+                <a href="{{ route('products.home') }}"
+                    class="flex items-center w-full mt-2 {{ request()->routeIs('products.home') ||str_starts_with(request()->route()->getName(),'products.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                    <span class="material-icons">inventory_2</span>
+                    <span class="ml-2 text-lg">Productos</span>
+                </a>
+
 
 
 
