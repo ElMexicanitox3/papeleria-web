@@ -57,6 +57,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('subcategory/create', 'store')->name('subcategory.store');
         Route::get('subcategory/edit/{uuid}', 'edit')->name('subcategory.edit');
         Route::put('subcategory/edit/{uuid}', 'update')->name('subcategory.update');
+        Route::post('subcategory/desactivate/{uuid}', 'desactivate')->name('subcategory.desactivate');
+        Route::post('subcategory/activate/{uuid}', 'activate')->name('subcategory.activate');
         Route::get('subcategory/getsucategory/{uuid}', 'getSubcategories')->name('subcategory.getSubcategories');
     });
 });

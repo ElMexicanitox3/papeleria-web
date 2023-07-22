@@ -70,12 +70,32 @@ class SubcategoryController extends Controller
         return redirect()->route('subcategory.home')->with('success', 'Subcategoría actualizada correctamente');
     }
 
+    public function desactivate(Request $request){
+        if(!$request->uuid){
+            return redirect()->back()->with('error', 'No se ha encontrado la subcategoría');
+        }
+        $subcategory = SubcategoryModel::where('uuid', $request->uuid)->first();
+        $subcategory->active = 0;
+        $subcategory->save();
+        return redirect()->back()->with('success', 'Subcategoría desactivada correctamente');
+    }
+
+    public function activate(Request $request){
+        if(!$request->uuid){
+            return redirect()->back()->with('error', 'No se ha encontrado la subcategoría');
+        }
+        $subcategory = SubcategoryModel::where('uuid', $request->uuid)->first();
+        $subcategory->active = 1;
+        $subcategory->save();
+        return redirect()->back()->with('success', 'Subcategoría activada correctamente');
+    }
+
     public function getSubcategories($uuid)
     {
         // Get the category by its UUID
         $category = CategoryModel::where('uuid', $uuid)->first();
         // return subcategories but only the uuid and name fields
-        $subcategories = SubcategoryModel::where('category_id', $category->id)->select('uuid', 'name')->get();
+        $subcategories = SubcategoryModel::where('category_id', $category->id)->where('active', 1)->select('uuid', 'name')->get();
         return response()->json(['subcategories' => $subcategories]);
     }
 

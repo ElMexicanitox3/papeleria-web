@@ -40,14 +40,10 @@
                                 </a>
 
                                 @if ($sub->active)
-                                    <form action="{{ route('category.desactivate', $sub->uuid) }}" method="post">
-
+                                    <form action="{{ route('subcategory.desactivate', $sub->uuid) }}" method="post">
                                         @csrf
-
                                         <input type="hidden" name="uuid" id="uuid"
                                             value="{{ $sub->uuid }}">
-
-                                        <!-- Boton de desactivar -->
                                         <button type="submit"
                                             class="p-2 rounded-md bg-red-500 hover:bg-red-600 flex items-center mr-2">
                                             <span class="material-icons text-white mr-1">highlight_off</span>
@@ -56,7 +52,7 @@
 
                                     </form>
                                 @else
-                                    <form action="{{ route('category.activate', $sub->uuid) }}" method="POST">
+                                    <form action="{{ route('subcategory.activate', $sub->uuid) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="uuid" id="uuid"
                                             value="{{ $sub->uuid }}">
