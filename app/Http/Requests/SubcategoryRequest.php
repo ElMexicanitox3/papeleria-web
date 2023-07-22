@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\CategoryModel;
 
 class SubcategoryRequest extends FormRequest
 {
@@ -21,8 +23,24 @@ class SubcategoryRequest extends FormRequest
      */
     public function rules(): array
     {
+        $subcategoryUuid = $this->route('uuid'); // Obtén el UUID de la subcategoría si existe (para la edición)
+
         return [
-            'name' => 'required|string|max:255|unique:subcategory,name',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('subcategory', 'name')->where(function ($query) {
+                    // Agregar una condición para que la regla de validación sea únicamente dentro de la categoría seleccionada
+                    $categoryUuid = $this->input('category');
+                    if ($categoryUuid) {
+                        $category = CategoryModel::where('uuid', $categoryUuid)->first();
+                        if ($category) {
+                            $query->where('category_id', $category->id);
+                        }
+                    }
+                })->ignore($subcategoryUuid, 'uuid'), // Ignorar el UUID de la subcategoría en caso de edición
+            ],
             'category' => 'required|uuid|exists:category,uuid',
         ];
     }

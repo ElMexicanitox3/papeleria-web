@@ -36,29 +36,18 @@ class SubcategoryController extends Controller
         return redirect()->route('subcategory.home')->with('success', 'Subcategoría creada correctamente');
     }
 
-    public function edit($uuid){
+    public function update(SubcategoryRequest $request, $uuid){
         $subcategory = SubcategoryModel::where('uuid', $uuid)->first();
-        if(!$subcategory){
-            return redirect()->route('subcategory.home')->with('error', 'La subcategoría no existe');
-        }
-        $categories = CategoryModel::where('active', 1)->get();
-        return view('subcategory.edit', compact('subcategory', 'categories'));
-    }
-
-    public function update(Request $request, $uuid){
-        // Find the subcategory by its UUID or create a new instance if it doesn't exist in the database
-        $subcategory = SubcategoryModel::firstOrNew(['uuid' => $uuid]);
     
         // Find the category by its UUID and make sure it is active
         $category = CategoryModel::where('uuid', $request->category)->where('active', 1)->first();
     
-        // Check if the name of the subcategory is different from the one being updated
-        // and if another subcategory with the same name already exists in the database
-        if($subcategory->name != $request->name && SubcategoryModel::where('name', $request->name)->exists()){
+        // Check if the name of the subcategory has changed and if the new name already exists within the same category
+        if ($subcategory->name !== $request->name && SubcategoryModel::where('name', $request->name)->where('category_id', $category->id)->exists()) {
             // If the condition is met, redirect to the subcategory edit page with an error message
-            return redirect()->route('subcategory.edit', $uuid)->with('error', 'La subcategoría ya existe');
+            return redirect()->route('subcategory.edit', $uuid)->with('error', 'La subcategoría ya existe en la misma categoría');
         }
-     
+    
         // Update the category ID and subcategory name in the current record
         $subcategory->category_id = $category->id;
         $subcategory->name = $request->name;
@@ -69,6 +58,17 @@ class SubcategoryController extends Controller
         // Redirect to the subcategory homepage with a success message
         return redirect()->route('subcategory.home')->with('success', 'Subcategoría actualizada correctamente');
     }
+    
+    
+    public function edit($uuid){
+        $subcategory = SubcategoryModel::where('uuid', $uuid)->first();
+        if(!$subcategory){
+            return redirect()->route('subcategory.home')->with('error', 'La subcategoría no existe');
+        }
+        $categories = CategoryModel::where('active', 1)->get();
+        return view('subcategory.edit', compact('subcategory', 'categories'));
+    }
+
 
     public function desactivate(Request $request){
         if(!$request->uuid){
