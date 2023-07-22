@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
         Route::post('products/activate/{uuid}', 'activate')->name('products.activate');
     });
-
+    
     Route::controller(CategoryController::class)->group(function(){
         Route::get('category', 'index')->name('category.home');
         Route::get('category/create', 'create')->name('category.create');
@@ -57,5 +57,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('subcategory/create', 'store')->name('subcategory.store');
         Route::get('subcategory/edit/{uuid}', 'edit')->name('subcategory.edit');
         Route::put('subcategory/edit/{uuid}', 'update')->name('subcategory.update');
+        Route::get('subcategory/getsucategory/{uuid}', 'getSubcategories')->name('subcategory.getSubcategories');
     });
 });

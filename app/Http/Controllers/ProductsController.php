@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Products;
+use App\Models\CategoryModel;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\SubcategoryModel;
 
 class ProductsController extends Controller
 {
@@ -16,7 +18,9 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $categories = CategoryModel::where('active', 1)->get();
+        $subcategories = SubcategoryModel::where('active', 1)->get();
+        return view('products.create', compact('categories', 'subcategories'));
     }
 
     public function store(Products $request)
@@ -66,4 +70,13 @@ class ProductsController extends Controller
         return redirect()->back()->with('success', 'Producto activado.');
     }
 
+
+    public function getSubcategories($categoryId)
+    {
+        return $categoryId;
+        // Obtener las subcategorías correspondientes a la categoría seleccionada
+        $subcategories = SubcategoryModel::where('uuid', $categoryId)->get();
+        // Devolver las subcategorías en formato JSON
+        return response()->json(['subcategories' => $subcategories]);
+    }
 }

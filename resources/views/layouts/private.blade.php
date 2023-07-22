@@ -24,6 +24,16 @@
         /* Ajusta el margen inferior deseado */
         /* Otros estilos que desees aplicar */
     }
+
+    .select2-selection__rendered {
+        line-height: 41px !important;
+    }
+    .select2-container .select2-selection--single {
+        height: 45px !important;
+    }
+    .select2-selection__arrow {
+        height: 44px !important;
+    }
 </style>
 
 <body>
@@ -113,7 +123,9 @@
     @extends('layouts.footer')
 
 </body>
+    @yield('scripts')
 <script>
+
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
         $('.select2').select2();

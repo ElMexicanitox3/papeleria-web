@@ -69,6 +69,15 @@ class SubcategoryController extends Controller
         // Redirect to the subcategory homepage with a success message
         return redirect()->route('subcategory.home')->with('success', 'Subcategoría actualizada correctamente');
     }
-    
+
+    public function getSubcategories($uuid)
+    {
+        // Get the category by its UUID
+        $category = CategoryModel::where('uuid', $uuid)->first();
+        // return subcategories but only the uuid and name fields
+        $subcategories = SubcategoryModel::where('category_id', $category->id)->select('uuid', 'name')->get();
+        return response()->json(['subcategories' => $subcategories]);
+    }
+
 
 }
