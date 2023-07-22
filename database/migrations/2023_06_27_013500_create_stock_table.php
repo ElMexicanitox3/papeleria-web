@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('stock', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('storage')->constrained('storage')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('product')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('storage_id')->constrained('storage')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
             $table->double('quantity')->nullable();
             $table->double('quantity_min')->nullable();
             $table->double('quantity_max')->nullable();

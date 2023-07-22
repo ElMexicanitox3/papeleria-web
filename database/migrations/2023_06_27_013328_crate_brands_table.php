@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->integer('store')->nullable();
-            $table->foreignId('subcategory')->constrained('subcategory')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('default_product')->default(0);
-            $table->string('barcode', 255)->unique();
-            $table->string('model')->nullable();
-            $table->string('name');
+            $table->foreignId('store_id')->constrained('store')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('name', 255)->unique();
             $table->text('description')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('deleted')->default(0);
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        //
     }
 };

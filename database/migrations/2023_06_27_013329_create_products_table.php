@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('storage', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('store_branch_id')->constrained('store_branches')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('store')->nullable();
+            $table->foreignId('subcategory_id')->constrained('subcategory')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('default_product')->default(0);
+            $table->string('barcode', 255)->unique();
+            $table->string('model')->nullable();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('deleted')->default(0);
             $table->timestamps();
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('storage');
+        Schema::dropIfExists('products');
     }
 };

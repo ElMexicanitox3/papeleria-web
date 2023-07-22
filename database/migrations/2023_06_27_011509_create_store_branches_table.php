@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('store_branches', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->foreignId('store')->constrained('store')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('store_id')->constrained('store')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
