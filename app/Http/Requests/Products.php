@@ -24,6 +24,8 @@ class Products extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'barcode' => 'required|string|max:255|unique:products,barcode',
+            'category' => 'required|exists:category,uuid',
+            'subcategory' => 'required|exists:subcategory,uuid',
             'model' => 'nullable|string',
             'description' => 'nullable|string',
         ];
@@ -40,6 +42,10 @@ class Products extends FormRequest
             'name.required' => 'El nombre del producto es requerido',
             'barcode.required' => 'El código de barras es requerido',
             'barcode.unique' => 'El código de barras ya existe',
+            'category.required' => 'La categoría es requerida',
+            'category.exists' => 'La categoría no existe',
+            'subcategory.required' => 'La subcategoría es requerida',
+            'subcategory.exists' => 'La subcategoría no existe',
         ];
     }
 }

@@ -13,13 +13,12 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('active', 'desc')->orderBy('id', 'desc')->paginate(10);
+        $products = Product::with('subcategory.category', 'brand')->orderBy('active', 'desc')->orderBy('id', 'desc')->paginate(10);
         return view('products.home', compact('products'));
     }
 
     public function create()
     {
-
         $categories = CategoryModel::where('active', 1)->get();
         $subcategories = SubcategoryModel::where('active', 1)->get();
         $brands = BrandsModel::where('active', 1)->get();
@@ -27,7 +26,10 @@ class ProductsController extends Controller
     }
 
     public function store(Products $request)
-    {
+    {   
+        $subcategory = SubcategoryModel::where('uuid', $request->subcategory)->first();
+        $brand = BrandsModel::where('uuid', $request->brand)->first();
+        $request->request->add(['subcategory_id' => $subcategory->id, 'brand_id' => $brand->id]);
         $product = Product::create($request->all());
         return redirect()->route('products.home');
     }

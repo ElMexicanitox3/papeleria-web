@@ -20,6 +20,8 @@
                 <tr>
                     <th class="">Codigo Barras</th>
                     <th class="">Nombre</th>
+                    <th class="">Marca</th>
+                    <th class="">Categoria / Subcategoria</th>
                     <th class="">Acciones</th>
                 </tr>
             </thead>
@@ -30,6 +32,8 @@
                     <tr>
                         <th>{{ $product->barcode }}</th>
                         <th>{{ $product->name }}</th>
+                        <th>{{ $product->brand->name }}</th>
+                        <th>{{ $product->subcategory->category->name }} / {{ $product->subcategory->name }}</th>
                         {{-- Botones de crud --}}
                         <th>
                             <div class="flex justify-center items-center">
