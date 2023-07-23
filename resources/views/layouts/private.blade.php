@@ -7,7 +7,7 @@
     <title> @yield('title')</title>
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 </head>
@@ -28,9 +28,11 @@
     .select2-selection__rendered {
         line-height: 41px !important;
     }
+
     .select2-container .select2-selection--single {
         height: 45px !important;
     }
+
     .select2-selection__arrow {
         height: 44px !important;
     }
@@ -77,39 +79,45 @@
 
             <!-- Enlaces del sidebar -->
             <div class="flex flex-col flex-grow items-center p-4">
-
+                <!-- Dashboard -->
                 <a href="{{ route('dashboard') }}"
                     class="flex items-center w-full {{ request()->is('dashboard') ? 'bg-indigo-100 ' : 'hover:text-indigo-600' }}">
                     <span class="material-icons">dashboard</span>
                     <span class="ml-2 text-lg">Dashboard</span>
                 </a>
 
-                <a href="{{ route('brands.home') }}"
-                    class="flex items-center w-full mt-2 {{ request()->routeIs('brands.home') ||str_starts_with(request()->route()->getName(),'brands.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
-                    <span class="material-icons">subtitles</span>
-                    <span class="ml-2 text-lg">Marcas</span>
-                </a>
-
-                <a href="{{ route('category.home') }}"
-                    class="flex items-center w-full mt-2 {{ request()->routeIs('category.home') ||str_starts_with(request()->route()->getName(),'category.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
-                    <span class="material-icons">category</span>
-                    <span class="ml-2 text-lg">Categorias</span>
-                </a>
-
-                <a href="{{ route('subcategory.home') }}"
-                    class="flex items-center w-full mt-2 {{ request()->routeIs('subcategory.home') ||str_starts_with(request()->route()->getName(),'subcategory.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
-                    <span class="material-icons">category</span>
-                    <span class="ml-2 text-lg">Subcategorias</span>
-                </a>
-
-                <a href="{{ route('products.home') }}"
-                    class="flex items-center w-full mt-2 {{ request()->routeIs('products.home') ||str_starts_with(request()->route()->getName(),'products.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
-                    <span class="material-icons">inventory_2</span>
+                <!-- Productos -->
+                <button class="w-full text-left flex items-center focus:outline-none hover:text-indigo-600"
+                    onclick="toggleContent('productos')">
+                    <span class="material-icons text-sm">inventory_2</span>
                     <span class="ml-2 text-lg">Productos</span>
-                </a>
+                    <span class="material-icons ml-auto text-sm">expand_more</span>
+                </button>
+                <div class="w-full hidden" id="productos">
+                    <a href="{{ route('brands.home') }}"
+                        class="pl-2 flex items-center w-full mt-2 {{ request()->routeIs('brands.home') ||str_starts_with(request()->route()->getName(),'brands.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                        <span class="material-icons text-sm">subtitles</span>
+                        <span class="ml-2 text-lg">Marcas</span>
+                    </a>
 
+                    <a href="{{ route('category.home') }}"
+                        class="pl-2 flex items-center w-full mt-2 {{ request()->routeIs('category.home') ||str_starts_with(request()->route()->getName(),'category.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                        <span class="material-icons text-sm">category</span>
+                        <span class="ml-2 text-lg">Categorias</span>
+                    </a>
 
+                    <a href="{{ route('subcategory.home') }}"
+                        class="pl-2 flex items-center w-full mt-2 {{ request()->routeIs('subcategory.home') ||str_starts_with(request()->route()->getName(),'subcategory.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                        <span class="material-icons text-sm">category</span>
+                        <span class="ml-2 text-lg">Subcategorias</span>
+                    </a>
 
+                    <a href="{{ route('products.home') }}"
+                        class="pl-2 flex items-center w-full mt-2 {{ request()->routeIs('products.home') ||str_starts_with(request()->route()->getName(),'products.create')? 'bg-indigo-100': 'hover:text-indigo-600' }}">
+                        <span class="material-icons text-sm">inventory_2</span>
+                        <span class="ml-2 text-lg">Productos</span>
+                    </a>
+                </div>
 
             </div>
 
@@ -130,13 +138,22 @@
     @extends('layouts.footer')
 
 </body>
-    @yield('scripts')
+@yield('scripts')
 <script>
-
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
         $('.select2').select2();
     });
+
+    function toggleContent(id) {
+        const element = document.getElementById(id);
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
+    }
+
     const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
     const sidebar = document.getElementById('sidebar');
 

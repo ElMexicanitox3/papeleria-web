@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Products;
+use App\Models\BrandsModel;
 use App\Models\CategoryModel;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -18,9 +19,11 @@ class ProductsController extends Controller
 
     public function create()
     {
+
         $categories = CategoryModel::where('active', 1)->get();
         $subcategories = SubcategoryModel::where('active', 1)->get();
-        return view('products.create', compact('categories', 'subcategories'));
+        $brands = BrandsModel::where('active', 1)->get();
+        return view('products.create', compact('categories', 'subcategories', 'brands'));
     }
 
     public function store(Products $request)

@@ -36,7 +36,7 @@
 
                 <div class="mb-4">
                     <label for="category" class="block text-gray-700 text-sm font-medium mb-1">Categoria</label>
-                    <select name="category" id="category" class="w-full border-2 border-black-300 rounded-md p-2 select2" style="width: 100%; height:50%;">
+                    <select name="category" id="category" class="w-full border-2 border-black-300 rounded-md p-2 select2">
                         <option value="">Selecciona una categoría</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->uuid }}">{{ $category->name }}</option>
@@ -55,6 +55,19 @@
                     <label for="model" class="block text-gray-700 text-sm font-medium mb-1">Modelo</label>
                     <input type="text" id="model" name="model" class="w-full border-2 border-black-300 rounded-md p-2" value="{{old('model')}}">
                     @error('model')
+                        <div class="text-red-500 text-xs">*{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-4">
+                    <label for="brand" class="block text-gray-700 text-sm font-medium mb-1">Marca del producto</label>
+                    <select name="brand" id="brand" class="w-full border-2 border-black-300 rounded-md p-2 select2">
+                        <option value="">Selecciona una marca</option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->uuid }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('brand')
                         <div class="text-red-500 text-xs">*{{ $message }}</div>
                     @enderror
                 </div>
