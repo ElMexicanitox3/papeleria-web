@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('store', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
+            $table->string('TIN')->unique()->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();

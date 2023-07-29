@@ -70,7 +70,7 @@
                 </div>
 
 
-                <button type="submit" class="{{ $buttonClasses }}">Iniciar sesión</button>
+                <button type="submit" class="{{ $buttonClasses }}">Crear Cuenta</button>
 
             </form>
 
