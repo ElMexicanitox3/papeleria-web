@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('inicio');
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return view('home/inicio');
+// });
+
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/', 'index')->name('home.index');
+    Route::get('login', 'login')->name('home.login');
+    // Route::post('login', 'loginUser')->name('home.loginUser');
+    Route::get('register', 'register')->name('home.register');
+    // Route::post('register', 'newUser')->name('home.newUser');
 });
