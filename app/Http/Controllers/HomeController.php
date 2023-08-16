@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterUser;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,7 +22,7 @@ class HomeController extends Controller
         return view('home.register');
     }
 
-    public function newUser(Request $request)
+    public function newUser(RegisterUser $request)
     {
         return $request->all();
         // User::create($request->all());
