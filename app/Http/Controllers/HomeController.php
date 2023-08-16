@@ -21,4 +21,12 @@ class HomeController extends Controller
         return view('home.register');
     }
 
+    public function newUser(Request $request)
+    {
+        return $request->all();
+        // User::create($request->all());
+        return redirect()->route('home.login')->with('success', 'Usuario creado correctamente.');
+    
+    }
+
 }

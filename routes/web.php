@@ -25,5 +25,5 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('login', 'login')->name('home.login');
     // Route::post('login', 'loginUser')->name('home.loginUser');
     Route::get('register', 'register')->name('home.register');
-    // Route::post('register', 'newUser')->name('home.newUser');
+    Route::post('register', 'newUser')->name('home.newUser');
 });
