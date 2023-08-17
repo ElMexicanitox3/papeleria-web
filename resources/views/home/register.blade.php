@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m12">
-                <div class="card">
+                <div class="card z-depth-5">
                     <form action="{{ route('home.newUser') }}" method="POST">
                         @csrf
                         <div class="card-content dark-text">

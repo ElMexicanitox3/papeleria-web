@@ -34,13 +34,13 @@ class RegisterUser extends FormRequest
             'store_name' => 'required|regex:/^[\pL\s]+$/u|max:255',
             'store_email' => 'required|email|max:255', 
             'store_phone' => 'required|regex:/^[0-9]+$/u|max:10',
-            'store_address' => 'required|regex:/^[\pL\s]+$/u|max:255',
+            'store_address' => 'required|max:255',
             
             // Branch data
             'branch_name' => 'required|regex:/^[\pL\s]+$/u|max:255',
             'branch_email' => 'required|email|max:255',
             'branch_phone' => 'required|regex:/^[0-9]+$/u|max:10',
-            'branch_address' => 'required|regex:/^[\pL\s]+$/u|max:255',
+            'branch_address' => 'required|max:255',
         ];
     }
 
