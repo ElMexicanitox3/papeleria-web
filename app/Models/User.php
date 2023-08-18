@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 
-class UserModel extends Model implements Authenticatable
+class User extends Model implements Authenticatable
 {
     use HasFactory;
 

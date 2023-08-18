@@ -8,7 +8,7 @@ use App\Http\Requests\LoginUser;
 use App\Http\Requests\RegisterUser;
 use App\Models\BranchModel;
 use App\Models\StoreModel;
-use App\Models\UserModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         // return $request->all();
 
-        $user = UserModel::where('email', $request->email)
+        $user = User::where('email', $request->email)
         ->where('active', 1)
         ->where('deleted', 0)
         ->first();
@@ -44,7 +44,10 @@ class HomeController extends Controller
 
         Auth::login($user);
 
-        // return redirect()->route('dashboard');
+        // Mandamos a la vista de dashboard
+        session()->flash('success', 'Bienvenido ' . $user->name . ' ' . $user->lastname);
+        return redirect()->route('dashboard');
+
     }
 
     public function newUser(RegisterUser $request)
@@ -78,7 +81,7 @@ class HomeController extends Controller
         $branch = BranchModel::create($branch);
 
         // save user
-        $user = UserModel::create($user);
+        $user = User::create($user);
 
         return redirect()->route('home.login')->with('success', 'Usuario creado correctamente.');
     

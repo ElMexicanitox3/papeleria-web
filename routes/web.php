@@ -27,3 +27,13 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('register', 'register')->name('home.register');
     Route::post('register', 'newUser')->name('home.newUser');
 });
+
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('dashboard', function () {
+        return view('dashboard.home');
+    })->name('dashboard');
+    
+});
+
