@@ -43,7 +43,7 @@
             background-color: #F44336 !important;
         }
 
-        .logout{
+        .logout {
             cursor: pointer;
             background-color: #F44336 !important;
             color: #ffffff !important;
@@ -56,12 +56,12 @@
         }
 
         .active {
-            color:  #ffffff !important;
+            color: #ffffff !important;
             background-color: var(--active-color) !important;
         }
 
         .selectdMenu {
-            color:  #ffffff !important;
+            color: #ffffff !important;
             background-color: var(--main-color) !important;
         }
 
@@ -98,22 +98,43 @@
     <ul class="sidenav sidenav-fixed" id="mobile-demo" style="transform: translateX(0%) !important">
         <ul class="collapsible">
             <li>
-                <div class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i class="material-icons">space_dashboard</i>Dashboard</div>
+                <div class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i
+                        class="material-icons">space_dashboard</i>Dashboard</div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">store</i>Empresa</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="auto-init.html"><i class="material-icons">info</i>Informacion</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">storefront</i>Sucursales</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">groups</i>Personal</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="auto-init.html"><i class="material-icons">groups</i>Lista de Personal</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">person_add</i>Agregar Personal</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">storefront</i>Asignar Sucursal</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
                 <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Productos</div>
                 <div class="collapsible-body">
                     <ul>
-                      <li><a href="auto-init.html"><i class="material-icons">shopping_cart</i>Marcas</a></li>
-                      <li><a href="auto-init.html"><i class="material-icons">category</i>Categorias</a></li>
-                      <li><a href="auto-init.html"><i class="material-icons">category</i>Subcategorias</a></li>
-                      <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>
-                      <li class="active"><a href="collapsible.html">Collapsible</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">shopping_cart</i>Marcas</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">category</i>Categorias</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">category</i>Subcategorias</a></li>
+                        <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>
                     </ul>
                 </div>
                 <div class="collapsible-header logout"><i class="material-icons">logout</i>Cerrar Sesion</div>
             </li>
         </ul>
 
-        
+
     </ul>
 
 
