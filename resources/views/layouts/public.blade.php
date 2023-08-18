@@ -67,6 +67,20 @@
 
     @yield('content')
     {{-- Scripts --}}
+
+    {{-- Messages --}}
+    @if (session('error'))
+        <script>
+            M.toast({html: '{{ session('error') }}', classes: 'red darken-2'});
+        </script>
+    @endif
+
+    @if (session('success'))
+        <script>
+            M.toast({html: '{{ session('error') }}', classes: 'green darken-2'});
+        </script>
+    @endif
+
 </body>
 @extends('layouts.footer')
 <!-- Script de java -->

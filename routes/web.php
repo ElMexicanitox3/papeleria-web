@@ -23,7 +23,7 @@ use App\Http\Controllers\HomeController;
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home.index');
     Route::get('login', 'login')->name('home.login');
-    // Route::post('login', 'loginUser')->name('home.loginUser');
+    Route::post('login', 'loginUser')->name('home.loginUser');
     Route::get('register', 'register')->name('home.register');
     Route::post('register', 'newUser')->name('home.newUser');
 });

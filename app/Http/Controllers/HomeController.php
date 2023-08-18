@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\LoginUser;
 use App\Http\Requests\RegisterUser;
 use App\Models\BranchModel;
 use App\Models\StoreModel;
@@ -23,6 +26,25 @@ class HomeController extends Controller
     public function register()
     {
         return view('home.register');
+    }
+
+    public function loginUser(LoginUser $request){
+
+        // return $request->all();
+
+        $user = UserModel::where('email', $request->email)
+        ->where('active', 1)
+        ->where('deleted', 0)
+        ->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            session()->flash('error', 'Credenciales inválidas. Intente de nuevo.');
+            return redirect()->back();
+        }
+
+        Auth::login($user);
+
+        // return redirect()->route('dashboard');
     }
 
     public function newUser(RegisterUser $request)
