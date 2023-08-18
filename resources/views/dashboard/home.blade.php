@@ -6,6 +6,6 @@
 
 <!-- Contenido -->
 @section('content')
-    xxxxxxxxxxxxxxx
+    
 @endsection
 <!-- Final del contenido -->

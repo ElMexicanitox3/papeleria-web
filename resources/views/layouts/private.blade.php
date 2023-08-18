@@ -21,6 +21,7 @@
         /* Var with the color */
         :root {
             --main-color: #2196F3;
+            --active-color: #64b5f6;
         }
 
         /* Change Color */
@@ -31,17 +32,51 @@
 
         /* Chane after focus */
         input:focus+label {
-            color: var(--main-color)  !important;
+            color: var(--main-color) !important;
         }
 
-        .btn.acept{
+        .btn.acept {
             background-color: var(--main-color) !important;
         }
 
-        .btn.cancel{
+        .btn.cancel {
             background-color: #F44336 !important;
         }
 
+        .logout{
+            cursor: pointer;
+            background-color: #F44336 !important;
+            color: #ffffff !important;
+        }
+
+        header,
+
+        body {
+            padding-left: 300px;
+        }
+
+        .active {
+            color:  #ffffff !important;
+            background-color: var(--active-color) !important;
+        }
+
+        .selectdMenu {
+            color:  #ffffff !important;
+            background-color: var(--main-color) !important;
+        }
+
+        @media only screen and (max-width: 992px) {
+            header, body {
+                padding-left: 0px;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+
+            .sidenav .sidenav-fixed {
+                transform: translateX(0px);
+            }
+        }
     </style>
 
 </head>
@@ -53,29 +88,54 @@
             {{-- <a href="#!" class="brand-logo"><img src="{{ asset('images/p-1.png') }}" alt="10" srcset=""></a> --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{route('home.register')}}">Cerrar Sesion</a></li>
+                <li><a href="{{ route('home.register') }}">Cerrar Sesion</a></li>
             </ul>
         </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{route('home.register')}}">Cerrar Sesion</a></li>
+
+
+    <ul class="sidenav sidenav-fixed" id="mobile-demo" style="transform: translateX(0%) !important">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i class="material-icons">space_dashboard</i>Dashboard</div>
+                <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Productos</div>
+                <div class="collapsible-body">
+                    <ul>
+                      <li><a href="auto-init.html"><i class="material-icons">shopping_cart</i>Marcas</a></li>
+                      <li><a href="auto-init.html"><i class="material-icons">category</i>Categorias</a></li>
+                      <li><a href="auto-init.html"><i class="material-icons">category</i>Subcategorias</a></li>
+                      <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>
+                      <li class="active"><a href="collapsible.html">Collapsible</a></li>
+                    </ul>
+                </div>
+                <div class="collapsible-header logout"><i class="material-icons">logout</i>Cerrar Sesion</div>
+            </li>
+        </ul>
+
+        
     </ul>
 
 
     @yield('content')
-    {{-- Scripts --}}
+
 
     {{-- Messages --}}
     @if (session('error'))
         <script>
-            M.toast({html: '{{ session('error') }}', classes: 'red darken-2'});
+            M.toast({
+                html: '{{ session('error') }}',
+                classes: 'red darken-2'
+            });
         </script>
     @endif
 
     @if (session('success'))
         <script>
-            M.toast({html: '{{ session('success') }}', classes: 'green darken-2'});
+            M.toast({
+                html: '{{ session('success') }}',
+                classes: 'green darken-2'
+            });
         </script>
     @endif
 
@@ -89,6 +149,10 @@
 
         var elems = document.querySelectorAll('.parallax');
         var instances = M.Parallax.init(elems);
+
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems);
+
     });
 </script>
 
