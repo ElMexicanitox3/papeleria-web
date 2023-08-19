@@ -9,8 +9,7 @@ use App\Models\BrandsModel;
 class BrandsController extends Controller
 {
     public function index(){
-        $brands = BrandsModel::orderBy('active', 'desc')->orderBy('id', 'desc')->paginate(1);
-        // dd($brands);
+        $brands = BrandsModel::orderBy('active', 'desc')->orderBy('id', 'desc')->paginate(10);
         return view('products.brands.home', compact('brands'));
     }
 
