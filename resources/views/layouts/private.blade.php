@@ -65,6 +65,17 @@
             background-color: var(--main-color) !important;
         }
 
+        .selectdSubMenu, .selectdSubMenu>i.material-icons{
+            color: #ffffff !important;
+            background-color: var(--active-color) !important;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; /* Puedes ajustar este margen según tus preferencias */
+        }
+
         @media only screen and (max-width: 992px) {
             header, body {
                 padding-left: 0px;
@@ -85,11 +96,7 @@
 
     <nav>
         <div class="nav-wrapper blue">
-            {{-- <a href="#!" class="brand-logo"><img src="{{ asset('images/p-1.png') }}" alt="10" srcset=""></a> --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{{ route('home.register') }}">Cerrar Sesion</a></li>
-            </ul>
         </div>
     </nav>
 
@@ -121,10 +128,10 @@
                 </div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Productos</div>
+                <div class="collapsible-header {{ request()->is('products/*') ? 'selectdMenu' : '' }}"><i class="material-icons">shopping_cart</i>Productos</div>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="auto-init.html"><i class="material-icons">shopping_cart</i>Marcas</a></li>
+                        <li><a href="{{route('brands.index')}}" class="{{ request()->is('products/brands*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">shopping_cart</i>Marcas</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">category</i>Categorias</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">category</i>Subcategorias</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>

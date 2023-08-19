@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -15,11 +16,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-// Route::get('/', function () {
-//     // return view('welcome');
-//     return view('home/inicio');
-// });
-
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home.index');
     Route::get('login', 'login')->name('home.login');
@@ -34,6 +30,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard.home');
     })->name('dashboard');
+
+    Route::controller(BrandsController::class)->group(function(){
+        Route::get('products/brands', 'index')->name('brands.index');
+        // Route::get('brands/create', 'create')->name('brands.create');
+        // Route::post('brands/create', 'store')->name('brands.store');
+        // Route::get('brands/{id}/edit', 'edit')->name('brands.edit');
+        // Route::post('brands/{id}/edit', 'update')->name('brands.update');
+        // Route::get('brands/{id}/delete', 'delete')->name('brands.delete');
+        // Route::post('brands/{id}/delete', 'destroy')->name('brands.destroy');
+    });
     
 });
 
