@@ -4,13 +4,9 @@
             {{-- Enlace a la página anterior --}}
             @if ($paginator->currentPage() > 1)
                 <li class="waves-effect"><a href="{{ $paginator->url(1) }}"><i class="material-icons">first_page</i></a></li>
-            @else
-                <li class="disabled"><i class="material-icons">first_page</i></li>
             @endif
 
-            @if ($paginator->onFirstPage())
-                <li class="disabled"><i class="material-icons">chevron_left</i></li>
-            @else
+            @if (!$paginator->onFirstPage())
                 <li class="waves-effect"><a href="{{ $paginator->previousPageUrl() }}"><i
                             class="material-icons">chevron_left</i></a></li>
             @endif
@@ -36,18 +32,12 @@
             @if ($paginator->hasMorePages())
                 <li class="waves-effect"><a href="{{ $paginator->nextPageUrl() }}"><i
                             class="material-icons">chevron_right</i></a></li>
-                {{-- Desactivar el enlace si no hay una página siguiente --}}
-            @else
-                <li class="disabled"><a href="{{ $paginator->nextPageUrl() }}"><i
-                            class="material-icons">chevron_right</i></a></li>
             @endif
 
             {{-- Botón para ir a la última página --}}
             @if ($paginator->currentPage() < $paginator->lastPage())
                 <li class="waves-effect"><a href="{{ $paginator->url($paginator->lastPage()) }}"><i
                             class="material-icons">last_page</i></a></li>
-            @else
-                <li class="disabled"><i class="material-icons">last_page</i></li>
             @endif
 
             {{-- Texto que indica la página actual --}}
