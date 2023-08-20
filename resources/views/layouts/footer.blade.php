@@ -1,4 +1,4 @@
-<footer class="page-footer blue">
+<footer class="page-footer blue " style="margin-top: auto;">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">

@@ -46,7 +46,7 @@
 
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
 
     <nav>
         <div class="nav-wrapper blue">
@@ -64,9 +64,9 @@
         <li><a href="{{route('home.register')}}">Registrarse</a></li>
     </ul>
 
-
-    @yield('content')
-    {{-- Scripts --}}
+    <main style="flex: 1;">
+        @yield('content')
+    </main>
 
     {{-- Messages --}}
     @if (session('error'))

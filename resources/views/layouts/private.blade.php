@@ -55,7 +55,7 @@
             padding-left: 300px;
         }
 
-        .active {
+        :not(label).active {
             color: #ffffff !important;
             background-color: var(--active-color) !important;
         }
@@ -76,6 +76,14 @@
             margin-top: 20px; /* Puedes ajustar este margen según tus preferencias */
         }
 
+        table.highlight>tbody>tr:hover {
+            /* background-color: var(--active-color) !important; */
+        }
+
+        table.highlight>tbody>tr {
+            /* color: white !important; <!-- you could ignore the !important here since materialize doesn't give a default color --> */
+        }
+
         @media only screen and (max-width: 992px) {
             header, body {
                 padding-left: 0px;
@@ -92,7 +100,7 @@
 
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
 
     <nav>
         <div class="nav-wrapper blue">
@@ -105,8 +113,7 @@
     <ul class="sidenav sidenav-fixed" id="mobile-demo" style="transform: translateX(0%) !important">
         <ul class="collapsible">
             <li>
-                <div class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i
-                        class="material-icons">space_dashboard</i>Dashboard</div>
+                <a href="{{route('dashboard')}}" class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i class="material-icons">space_dashboard</i>Dashboard</A>
             </li>
             <li>
                 <div class="collapsible-header"><i class="material-icons">store</i>Empresa</div>
@@ -144,8 +151,9 @@
 
     </ul>
 
-
-    @yield('content')
+    <main style="flex: 1;">
+        @yield('content')
+    </main>
 
 
     {{-- Messages --}}
