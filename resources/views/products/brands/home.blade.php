@@ -14,7 +14,7 @@
                 <p class="center-align">Aqui podras registrar las marcas de los productos de tu empresa</p>
             </div>
             <div class="col s12">
-                <a href="{{route('brands.create')}}" class="btn btn-small waves-effect waves-light blue"><i class="material-icons left">add</i>Nueva Marca</a>
+                @include('includes.btn-small', ['alingicon'=>'left', 'text'=>'Nueva Marca','icon' => 'add', 'color'=> 'blue',  'href' => route('brands.create')])
             </div>
         </div>
         <table class="highlight">
@@ -27,6 +27,7 @@
 
             <tbody>
                 @foreach ($brands as $brand)
+
                     <tr>
                         <td>{{ $brand->name }}</td>
                         <td>

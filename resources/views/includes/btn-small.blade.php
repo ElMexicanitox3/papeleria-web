@@ -5,7 +5,8 @@
     $mesagge_tootip = $mesagge_tootip ?? ''; // Valor por defecto 'Nuevo registro' si no se proporciona 'mesagge_tootip'
     $href = $href ?? '#'; // Valor por defecto '#' si no se proporciona 'href'
     $modaltrigger = $modaltrigger ?? ''; // Valor por defecto '' si no se proporciona 'modal-trigger'
+    $alingicon = $alingicon ?? ''; // Valor por defecto '' si no se proporciona 'alingicon'
 @endphp
 
 
-<a href="{{$href}}{{$modaltrigger}}" class="btn btn-small waves-effect waves-light {{$color}} <?php echo ($mesagge_tootip != "" ? "tooltipped" : "") ?>  <?php echo ($modaltrigger != "" ? "modal-trigger" : "") ?>" data-position="top" data-tooltip="{{$mesagge_tootip}}"><i class="material-icons">{{$icon}}</i>{{$text}}</a>
+<a href="{{$href}}{{$modaltrigger}}" class="btn btn-small waves-effect waves-light {{$color}} <?php echo ($mesagge_tootip != "" ? "tooltipped" : "") ?>  <?php echo ($modaltrigger != "" ? "modal-trigger" : "") ?>" data-position="top" data-tooltip="{{$mesagge_tootip}}"><i class="material-icons {{$alingicon}}">{{$icon}}</i>{{$text}}</a>
