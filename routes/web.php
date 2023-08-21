@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('products/brands', 'index')->name('brands.index');
         Route::get('products/brands/create', 'create')->name('brands.create');
         Route::post('products/brands/create', 'store')->name('brands.store');
+        Route::post('products/brands/{id}/desactivate', 'desactivate')->name('brands.desactivate');
+        Route::post('products/brands/{id}/activate', 'activate')->name('brands.activate');
+
         // Route::get('brands/{id}/edit', 'edit')->name('brands.edit');
         // Route::post('brands/{id}/edit', 'update')->name('brands.update');
         // Route::get('brands/{id}/delete', 'delete')->name('brands.delete');

@@ -25,4 +25,20 @@ class BrandsController extends Controller
         return redirect()->route('brands.index')->with('success', 'Marca creada correctamente');
     }
 
+    // Desactivate brand
+    public function desactivate($uuid){
+        $brand = BrandsModel::where('uuid', $uuid)->firstOrFail();
+        $brand->active = false;
+        $brand->save();
+        return redirect()->back()->with('success', 'Marca activada correctamente');
+    }
+
+    // Activate brand
+    public function activate($uuid){
+        $brand = BrandsModel::where('uuid', $uuid)->firstOrFail();
+        $brand->active = true;
+        $brand->save();
+        return redirect()->back()->with('success', 'Marca activada correctamente');
+    }
+
 }

@@ -8,7 +8,6 @@
 @section('content')
 
     <div class="container">
-        {{-- Title --}}
         <div class="row">
             <div class="col s12">
                 <h5 class="center-align">Marca de los productos</h5>
@@ -31,10 +30,31 @@
                     <tr>
                         <td>{{ $brand->name }}</td>
                         <td>
-                            {{-- <a href="{{ route('brands.edit', $brand->id) }}" class="btn btn-small btn-floating waves-effect waves-light blue"><i class="material-icons">edit</i></a>
-                        <a href="{{ route('brands.destroy', $brand->id) }}" class="btn btn-small btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></a> --}}
+                            @include('includes.btn-small', ['icon' => 'edit', 'mesagge_tootip' => 'Editar marca'])
+                            @if($brand->active)
+                                @include('includes.btn-small', ['icon' => 'block', 'mesagge_tootip' => 'Desactivar marca', 'color' => 'red', 'modaltrigger' => 'del'.$brand->uuid])
+                            @else
+                                @include('includes.btn-small', ['icon' => 'check', 'mesagge_tootip' => 'Activar marca', 'color' => 'green', 'modaltrigger' => 'act'.$brand->uuid])
+                            @endif
                         </td>
                     </tr>
+
+                    @include('includes.desicion-custom-modal', [
+                        'id' => 'del'.$brand->uuid,
+                        'title' => 'Desactivar marca',
+                        'text' => '¿Estas seguro de desactivar la marca "'.$brand->name.'"?',
+                        'action' => route('brands.desactivate', $brand->uuid),
+                        'value' => $brand->uuid
+                    ])
+
+                    @include('includes.desicion-custom-modal', [
+                        'id' => 'act'.$brand->uuid,
+                        'title' => 'Activar marca',
+                        'text' => '¿Estas seguro de activar la marca "'.$brand->name.'"?',
+                        'action' => route('brands.activate', $brand->uuid),
+                        'value' => $brand->uuid
+                    ])
+
                 @endforeach
             </tbody>
         </table>

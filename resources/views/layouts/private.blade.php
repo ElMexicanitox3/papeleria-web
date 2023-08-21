@@ -84,9 +84,20 @@
             /* color: white !important; <!-- you could ignore the !important here since materialize doesn't give a default color --> */
         }
 
+        
+
+
         @media only screen and (max-width: 992px) {
             header, body {
                 padding-left: 0px;
+            }
+
+            .desicion-custom-modal {
+                max-width: 90%; /* Define el ancho máximo del modal */
+                width: auto !important;
+                margin: 10% auto; /* Centrar verticalmente y ajustar el margen horizontal */
+                height: auto !important;
+                max-height: 70vh; /* Limitar la altura máxima y permitir el desplazamiento si es necesario */
             }
         }
 
@@ -94,6 +105,14 @@
 
             .sidenav .sidenav-fixed {
                 transform: translateX(0px);
+            }
+
+            .desicion-custom-modal {
+                max-width: 30%; /* Define el ancho máximo del modal */
+                width: auto !important;
+                margin: 10% auto; /* Centrar verticalmente y ajustar el margen horizontal */
+                height: auto !important;
+                max-height: 70vh; /* Limitar la altura máxima y permitir el desplazamiento si es necesario */
             }
         }
     </style>
@@ -188,6 +207,12 @@
 
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems);
+
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems);
+
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
 
     });
 </script>
