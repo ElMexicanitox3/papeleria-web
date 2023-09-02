@@ -158,7 +158,7 @@
                 <div class="collapsible-body">
                     <ul>
                         <li><a href="{{route('brands.index')}}" class="{{ request()->is('products/brands*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">shopping_cart</i>Marcas</a></li>
-                        <li><a href="auto-init.html"><i class="material-icons">category</i>Categorias</a></li>
+                        <li><a href="{{route('category.index')}}" class="{{ request()->is('products/category*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Categorias</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">category</i>Subcategorias</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>
                     </ul>
