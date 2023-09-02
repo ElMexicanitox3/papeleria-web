@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products\brands;
 
-use App\Http\Requests\products\brands\NewBrand;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Products\brands\NewBrand;
+use App\Models\products\brands\BrandsModel;
 use Illuminate\Http\Request;
-use App\Models\BrandsModel;
-
 
 class BrandsController extends Controller
 {
@@ -52,5 +52,4 @@ class BrandsController extends Controller
         $brand->save();
         return redirect()->back()->with('success', 'Marca activada correctamente');
     }
-
 }

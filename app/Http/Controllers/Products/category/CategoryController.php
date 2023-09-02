@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Products\category;
 
-use App\Http\Requests\products\category\FormCategory;
-use App\Models\CategoryModel;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Products\category\FormCategory;
+use App\Models\Products\category\CategoryModel;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

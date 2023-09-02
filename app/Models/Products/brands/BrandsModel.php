@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\products\brands;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class CategoryModel extends Model
+
+class BrandsModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'category';
+    protected $table = 'brands';
 
     protected $fillable = [
         'uuid',
@@ -25,5 +26,4 @@ class CategoryModel extends Model
             $model->uuid = Str::uuid();
         });
     }
-
 }

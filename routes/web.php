@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\BrandsController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\products\brands\BrandsController;
+use App\Http\Controllers\products\category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
