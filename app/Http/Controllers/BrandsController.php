@@ -25,6 +25,18 @@ class BrandsController extends Controller
         return redirect()->route('brands.index')->with('success', 'Marca creada correctamente');
     }
 
+    public function edit($uuid){
+        $brand = BrandsModel::where('uuid', $uuid)->firstOrFail();
+        return view('products.brands.create', compact('brand'));
+    }
+
+    public function update(NewBrand $request, $uuid){
+        $brand = BrandsModel::where('uuid', $uuid)->firstOrFail();
+        $brand->name = $request->name;
+        $brand->save();
+        return redirect()->route('brands.index')->with('success', 'Marca actualizada correctamente');
+    }
+
     // Desactivate brand
     public function desactivate($uuid){
         $brand = BrandsModel::where('uuid', $uuid)->firstOrFail();

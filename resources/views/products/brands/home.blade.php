@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{ $brand->name }}</td>
                         <td>
-                            @include('includes.btn-small', ['icon' => 'edit', 'mesagge_tootip' => 'Editar marca'])
+                            @include('includes.btn-small', ['href'=>route('brands.edit', $brand->uuid),'icon' => 'edit', 'mesagge_tootip' => 'Editar marca'])
                             @if($brand->active)
                                 @include('includes.btn-small', ['icon' => 'block', 'mesagge_tootip' => 'Desactivar marca', 'color' => 'red', 'modaltrigger' => 'del'.$brand->uuid])
                             @else
