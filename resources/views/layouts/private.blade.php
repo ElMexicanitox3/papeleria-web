@@ -159,7 +159,7 @@
                     <ul>
                         <li><a href="{{route('brands.index')}}" class="{{ request()->is('products/brands*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">shopping_cart</i>Marcas</a></li>
                         <li><a href="{{route('category.index')}}" class="{{ request()->is('products/category*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Categorias</a></li>
-                        <li><a href="auto-init.html"><i class="material-icons">category</i>Subcategorias</a></li>
+                        <li><a href="{{route('subcategory.index')}}" class="{{ request()->is('products/subcategory*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Subcategorias</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>
                     </ul>
                 </div>
@@ -213,6 +213,9 @@
 
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems);
+
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
 
     });
 </script>

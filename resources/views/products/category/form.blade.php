@@ -2,7 +2,7 @@
 @extends('layouts.private')
 
 <!-- Titulo -->
-@section('title', 'Home')
+@section('title', isset($category) ? 'Editar categoria' : 'Crear categoria')
 
 <!-- Contenido -->
 @section('content')

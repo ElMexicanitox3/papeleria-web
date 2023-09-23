@@ -5,6 +5,7 @@ use App\Http\Controllers\products\category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Products\subcategory\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +52,19 @@ Route::middleware(['auth'])->group(function () {
         Route::put('products/category/edit/{uuid}', 'update')->name('category.update');
         Route::post('products/category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
         Route::post('products/category/activate/{uuif}', 'activate')->name('category.activate');
-
     });
+    
+    Route::controller(SubCategoryController::class)->group(function(){
+        Route::get('products/subcategory', 'index')->name('subcategory.index');
+        Route::get('products/subcategory/create', 'create')->name('subcategory.create');
+        Route::post('products/subcategory/create', 'store')->name('subcategory.store');
+        Route::get('products/subcategory/edit/{uuid}', 'edit')->name('subcategory.edit');
+        Route::put('products/subcategory/edit/{uuid}', 'update')->name('subcategory.update');
+        // Route::post('products/category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
+        // Route::post('products/category/activate/{uuif}', 'activate')->name('category.activate');
+    });
+
+
     
 });
 
