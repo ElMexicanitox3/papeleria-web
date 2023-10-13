@@ -33,7 +33,6 @@ class SubCategoryController extends Controller
             return redirect()->route('subcategory.create')->with('error', 'La categoría no existe');
         }
 
-        // Validamos que no exista la convinacion de categoria y subcategoria si no retornamos que existe
         $subcategory = SubCategoryModel::where('category_id', $category->id)->where('name', $request->subcategory)->first();
         if($subcategory){
             return back()->withInput()->with('error', 'La convinación de categoría y subcategoría ya existe');
@@ -47,14 +46,29 @@ class SubCategoryController extends Controller
     }
 
     public function edit($uuid){
-        // consultamos la subcategoria
         $subcategory = SubCategoryModel::where('uuid', $uuid)->first();
         $categories = CategoryModel::where('active', 1)->where('deleted', 0)->get();
         return view('products.subcategory.form', compact('subcategory', 'categories'));
 
     }
 
-    public function update(Request $r){
-        dd($r->all());
+    public function update(FormSubcategory $request){
+       
+        // dd($request->all());
+
+        $category = CategoryModel::where('uuid', $request->category)->first();
+        $subcategory = SubCategoryModel::where('category_id', $category->id)->where('name', $request->subcategory)->first();
+        if($subcategory){
+            return back()->withInput()->with('error', 'La convinación de categoría y subcategoría ya existe');
+        }
+
+        $subcategory = SubCategoryModel::where('uuid', $request->uuid)->first();
+
+        $subcategory->category_id = $category->id;
+        $subcategory->name = $request->subcategory;
+        $subcategory->save();
+        
+        return redirect()->route('subcategory.index')->with('success', 'Subcategoría actualizada correctamente');
+
     }
 }
