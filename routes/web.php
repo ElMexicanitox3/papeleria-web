@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\products\brands\BrandsController;
 use App\Http\Controllers\products\category\CategoryController;
+use App\Http\Controllers\Products\subcategory\SubCategoryController;
+use App\Http\Controllers\Products\products\ProductsController;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Products\subcategory\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,8 +62,21 @@ Route::middleware(['auth'])->group(function () {
         Route::post('products/subcategory/create', 'store')->name('subcategory.store');
         Route::get('products/subcategory/edit/{uuid}', 'edit')->name('subcategory.edit');
         Route::put('products/subcategory/edit/{uuid}', 'update')->name('subcategory.update');
-        // Route::post('products/category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
-        // Route::post('products/category/activate/{uuif}', 'activate')->name('category.activate');
+        Route::post('products/category/desactivate/{uuid}', 'desactivate')->name('category.desactivate');
+        Route::post('products/category/activate/{uuid}', 'activate')->name('category.activate');
+
+        // Get subcategory by category uuid
+        Route::get('products/subcategory/getSubcategory/{uuid}', 'getSubcategory')->name('subcategory.get-subcategory');
+    });
+
+    Route::controller(ProductsController::class)->group(function(){
+        Route::get('products/home', 'index')->name('products.index');
+        Route::get('products/home/create', 'create')->name('products.create');
+        Route::post('products/create', 'store')->name('products.store');
+        // Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
+        // Route::put('products/edit/{uuid}', 'update')->name('products.update');
+        Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
+        Route::post('products/activate/{uuif}', 'activate')->name('products.activate');
     });
 
 

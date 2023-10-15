@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @yield('title') </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -14,7 +15,6 @@
 
 
     <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     {{-- Style --}}
     <style>
@@ -160,7 +160,7 @@
                         <li><a href="{{route('brands.index')}}" class="{{ request()->is('products/brands*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">shopping_cart</i>Marcas</a></li>
                         <li><a href="{{route('category.index')}}" class="{{ request()->is('products/category*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Categorias</a></li>
                         <li><a href="{{route('subcategory.index')}}" class="{{ request()->is('products/subcategory*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Subcategorias</a></li>
-                        <li><a href="auto-init.html"><i class="material-icons">inventory_2</i>Productos</a></li>
+                        <li><a href="{{route('products.index')}}" class="{{request()->is('products/home*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">inventory_2</i>Productos</a></li>
                     </ul>
                 </div>
                 <div class="collapsible-header logout"><i class="material-icons">logout</i>Cerrar Sesion</div>
@@ -197,7 +197,11 @@
 </body>
 @extends('layouts.footer')
 <!-- Script de java -->
+@yield('script')
 <script>
+
+
+
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems);

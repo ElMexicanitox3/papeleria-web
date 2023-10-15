@@ -54,8 +54,6 @@ class SubCategoryController extends Controller
 
     public function update(FormSubcategory $request){
        
-        // dd($request->all());
-
         $category = CategoryModel::where('uuid', $request->category)->first();
         $subcategory = SubCategoryModel::where('category_id', $category->id)->where('name', $request->subcategory)->first();
         if($subcategory){
@@ -70,5 +68,27 @@ class SubCategoryController extends Controller
         
         return redirect()->route('subcategory.index')->with('success', 'Subcategoría actualizada correctamente');
 
+    }
+
+    public function desactivate($uuid){
+        $subcategory = SubCategoryModel::where('uuid', $uuid)->first();
+        $subcategory->active = 0;
+        $subcategory->save();
+        return redirect()->route('subcategory.index')->with('success', 'Subcategoría desactivada correctamente');
+    }
+
+    public function activate($uuid){
+        $subcategory = SubCategoryModel::where('uuid', $uuid)->first();
+        $subcategory->active = 1;
+        $subcategory->save();
+        return redirect()->route('subcategory.index')->with('success', 'Subcategoría activada correctamente');
+    }
+
+    public function getSubcategory(Request $request){
+        // dd($request->all());
+        $category = CategoryModel::where('uuid', $request->uuid)->first();
+        $subcategories = SubCategoryModel::select('uuid', 'name')->where('category_id', $category->id)->where('active', 1)->where('deleted', 0)->get();
+        // $subcategories = SubCategoryModel::where('category_id', $category->id)->get();
+        return response()->json($subcategories);
     }
 }

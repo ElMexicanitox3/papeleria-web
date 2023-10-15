@@ -33,7 +33,7 @@
                                         'label' => 'Categoria',
                                         'defaultoption' => 'Selecciona una categoria',
                                         'options' => $categories,
-                                        'defaultvalue' => isset($subcategory) ? $subcategory->category : ''
+                                        'defaultvalue' => isset($subcategory) ? $subcategory->category->uuid : ''
                                     ])
                                 </div>
                                 <div class="col s12 m12">

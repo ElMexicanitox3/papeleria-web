@@ -19,8 +19,8 @@
     <table class="highlight">
         <thead>
             <tr>
-                <th>Categoria</th>
                 <th>Subcategoria</th>
+                <th>Categoria</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -29,8 +29,8 @@
             @foreach ($subcategories as $subcategory)
 
                 <tr>
-                    <td>{{$subcategory->category->name}}</td>
                     <td>{{$subcategory->name}}</td>
+                    <td>{{$subcategory->category->name}}</td>
                     <td>
                         @include('includes.btn-small', ['href'=>route('subcategory.edit', $subcategory->uuid),'icon' => 'edit', 'mesagge_tootip' => 'Editar Subcategoria'])
                         @if($subcategory->active)
