@@ -28,6 +28,29 @@ class ProductsController extends Controller
         return view('products.products.form', compact('categories', 'brands'));
     }
 
+    public function edit(Request $uuid)
+    {
+        $product = ProductModel::where('uuid', $uuid->uuid)->first();
+        $categories = CategoryModel::where('active', 1)->where('deleted', 0)->get();
+        $categorySelected = SubCategoryModel::where('id', $product->subcategory_id)->first();
+        $brands = BrandsModel::where('active', 1)->where('deleted', 0)->get();
+        return view('products.products.form', compact('product','categories', 'brands'));
+    }
+    
+    public function update(FormProducts $request){
+        $subcategory = SubCategoryModel::where('uuid', $request->subcategory)->first();
+        $brand = BrandsModel::where('uuid', $request->brand)->first();
+        $product = ProductModel::where('uuid', $request->uuid)->first();
+        $product->subcategory_id = $subcategory->id;
+        $product->brand_id = $brand->id;
+        $product->barcode = $request->barcode;
+        $product->model = $request->model;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->save();
+        return redirect()->route('products.index')->with('success', 'Producto actualizado correctamente');
+    }
+
     public function store(FormProducts $request)
     {
         $subcategory = SubCategoryModel::where('uuid', $request->subcategory)->first();

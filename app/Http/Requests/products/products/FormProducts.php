@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\products\products;
 
+use App\Models\products\products\ProductModel;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FormProducts extends FormRequest
@@ -27,8 +28,24 @@ class FormProducts extends FormRequest
             'category' => 'required|exists:category,uuid',
             'subcategory' => 'required|exists:subcategory,uuid',
             'brand' => 'required|exists:brands,uuid',
-            'barcode' => 'required|string|max:255|unique:products,barcode',
             'model' => 'required|string|max:255',
+            'barcode' => [
+                'required',
+                'string',
+                'max:255',
+                function ($attribute, $value, $fail) {
+                    // Search product by uuid
+                    $existingProduct = ProductModel::where('uuid', $this->route('uuid'))->first();
+                    // If the barcode is different, check if the barcode exists
+                    if ($existingProduct->barcode != $value) {
+                        $product = ProductModel::where('barcode', $value)->first();
+                        if ($product) {
+                            $fail('El código de barras ya existe');
+                        }
+                    }
+                },
+            ],
+            
         ];
     }
 

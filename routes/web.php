@@ -73,8 +73,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('products/home', 'index')->name('products.index');
         Route::get('products/home/create', 'create')->name('products.create');
         Route::post('products/create', 'store')->name('products.store');
-        // Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
-        // Route::put('products/edit/{uuid}', 'update')->name('products.update');
+        Route::get('products/edit/{uuid}', 'edit')->name('products.edit');
+        Route::put('products/edit/{uuid}', 'update')->name('products.update');
         Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
         Route::post('products/activate/{uuif}', 'activate')->name('products.activate');
     });

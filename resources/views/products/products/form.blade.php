@@ -1,19 +1,19 @@
 @extends('layouts.private')
-@section('title', 'Crear Producto')
+
+@section('title', isset($product) ? 'Editar Producto' : 'Crear Producto')
 @section('content')
     <div class="container">
 
         <div class="row">
             <div class="col s12">
-                <h5 class="center-align">Crear Producto</h5>
-                <p class="center-align">Aqui podras crear el producto</p>
+                <h5 class="center-align">{{ isset($product) ? 'Editar Producto' : 'Crear Producto' }}</h5>
+                <p class="center-align">{{ isset($product) ? 'Aqui podras editar tu producto' : 'Aqui podras crear el producto' }}</p>
             </div>
-            {{-- <div class="col s12">
-                @include('includes.btn-small', ['alingicon'=>'left', 'text'=>'Nueva Categoria','icon' => 'add', 'color'=> 'blue',  'href' => route('category.create')])
-            </div> --}}
         </div>
 
-        <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ isset($product) ? route('products.update', $product->uuid) : route('products.store') }}" method="POST" enctype="multipart/form-data">
+            
+            @method(isset($product) ? 'put' : 'post')  
             @csrf
 
             <div class="row">
@@ -24,7 +24,7 @@
                         'label' => 'Categoria',
                         'defaultoption' => 'Selecciona una categoria',
                         'options' => $categories,
-                        'defaultvalue' => isset($product) ? $product->subcategory_id : ''
+                        'defaultvalue' => isset($product) ? $product->subcategory->category->uuid : ''
                     ])
                 </div>
                 
@@ -43,7 +43,7 @@
                         'label' => 'Marca del producto',
                         'defaultoption' => 'Selecciona una marca',
                         'options' => $brands,
-                        'defaultvalue' => ''
+                        'defaultvalue' => isset($product) ? $product->brand_id : ''
                     ])
                 </div>
                 
@@ -109,8 +109,8 @@
     @section('script')
     <script>
 
-        var oldSubcategory = "{{old('subcategory')}}";
-        var oldCategory = "{{old('category')}}";
+        var oldSubcategory = "{{isset($product) ? $product->subcategory->uuid : old('subcategory')}}";
+        var oldCategory = "{{isset($product) ? $product->subcategory->category->uuid : old('category')}}";
 
         $("#category").on('change', function (e) { 
             e.preventDefault();

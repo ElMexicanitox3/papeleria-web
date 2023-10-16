@@ -46,6 +46,8 @@
                     {{ $product->subcategory->name }}
                 </td>
                 <td>
+                    @include('includes.btn-small', ['href'=>route('products.edit', $product->uuid),'icon' => 'edit', 'mesagge_tootip' => 'Editar Producto'])
+
                     @if($product->active)
                         @include('includes.btn-small', ['icon' => 'block', 'mesagge_tootip' => 'Desactivar producto', 'color' => 'red', 'modaltrigger' => 'del'.$product->uuid])
                     @else
@@ -69,7 +71,7 @@
                     'action' => route('products.activate', $product->uuid),
                     'value' => $product->uuid
                 ])
-                
+
             @endforeach
         </tbody>
     </table>
