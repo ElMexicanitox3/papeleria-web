@@ -135,10 +135,10 @@
                 <a href="{{route('dashboard')}}" class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i class="material-icons">space_dashboard</i>Dashboard</A>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons">store</i>Empresa</div>
+                <div class="collapsible-header  {{ request()->is('enterprise/*') ? 'selectdMenu' : '' }}"><i class="material-icons">store</i>Empresa</div>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="auto-init.html"><i class="material-icons">info</i>Informacion</a></li>
+                        <li><a href="{{route('enterprise.index')}}" class="{{ request()->is('enterprise/information') ? 'selectdSubMenu' : '' }}"><i class="material-icons">info</i>Informacion</a></li>
                         <li><a href="auto-init.html"><i class="material-icons">storefront</i>Sucursales</a></li>
                     </ul>
                 </div>

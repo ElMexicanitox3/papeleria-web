@@ -9,6 +9,7 @@ use App\Http\Requests\RegisterUser;
 use App\Models\BranchModel;
 use App\Models\StoreModel;
 use App\Models\User;
+use App\Models\UserStoreModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +26,9 @@ class HomeController extends Controller
 
     public function register()
     {
-        return view('home.register');
+        // return view('home.register');
+        return redirect()->route('home.login')->with('success', 's');
+
     }
 
     public function loginUser(LoginUser $request){
@@ -46,6 +49,7 @@ class HomeController extends Controller
 
         // Mandamos a la vista de dashboard
         session()->flash('success', 'Bienvenido ' . $user->name . ' ' . $user->lastname);
+        
         return redirect()->route('dashboard');
 
     }
@@ -82,6 +86,13 @@ class HomeController extends Controller
 
         // save user
         $user = User::create($user);
+
+        // save user asignation store and branch
+        $userStore = new UserStoreModel();
+        $userStore->user_id = $user->id;
+        $userStore->store_id = $store->id;
+        $userStore->is_owner = 1;
+        $userStore->save();
 
         return redirect()->route('home.login')->with('success', 'Usuario creado correctamente.');
     

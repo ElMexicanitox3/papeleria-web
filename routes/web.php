@@ -4,6 +4,7 @@ use App\Http\Controllers\products\brands\BrandsController;
 use App\Http\Controllers\products\category\CategoryController;
 use App\Http\Controllers\Products\subcategory\SubCategoryController;
 use App\Http\Controllers\Products\products\ProductsController;
+use App\Http\Controllers\enterprise\information\EnterpriseInfoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,10 @@ Route::middleware(['auth'])->group(function () {
         Route::put('products/edit/{uuid}', 'update')->name('products.update');
         Route::post('products/desactivate/{uuid}', 'desactivate')->name('products.desactivate');
         Route::post('products/activate/{uuif}', 'activate')->name('products.activate');
+    });
+
+    Route::controller(EnterpriseInfoController::class)->group(function(){
+        Route::get('enterprise/information', 'index')->name('enterprise.index');
     });
 
 
