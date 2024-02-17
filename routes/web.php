@@ -9,6 +9,7 @@ use App\Http\Controllers\enterprise\information\EnterpriseInfoController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Storage\Home\StorageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(EnterpriseInfoController::class)->group(function(){
         Route::get('enterprise/information', 'index')->name('enterprise.index');
+    });
+
+    Route::controller(StorageController::class)->group(function(){
+        Route::get('storage/home', 'index')->name('storage.index');
+        // Route::get('storage/home/create', 'create')->name('storage.create');
+        // Route::post('storage/create', 'store')->name('storage.store');
+        // Route::get('storage/edit/{uuid}', 'edit')->name('storage.edit');
+        // Route::put('storage/edit/{uuid}', 'update')->name('storage.update');
+        // Route::post('storage/desactivate/{uuid}', 'desactivate')->name('storage.desactivate');
+        // Route::post('storage/activate/{uuif}', 'activate')->name('storage.activate');
     });
 
 

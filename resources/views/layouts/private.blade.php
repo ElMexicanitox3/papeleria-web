@@ -163,6 +163,16 @@
                         <li><a href="{{route('products.index')}}" class="{{request()->is('products/home*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">inventory_2</i>Productos</a></li>
                     </ul>
                 </div>
+            </li>
+            <li>
+                <div class="collapsible-header {{ request()->is('storage/*') ? 'selectdMenu' : '' }}"><i class="material-icons">warehouse</i>Almacenamiento</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="{{route('storage.index')}}" class="{{ request()->is('storage/home*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">warehouse</i>Almacenes</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
                 <div class="collapsible-header logout"><i class="material-icons">logout</i>Cerrar Sesion</div>
             </li>
         </ul>
