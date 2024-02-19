@@ -26,14 +26,10 @@ class HomeController extends Controller
 
     public function register()
     {
-        // return view('home.register');
-        return redirect()->route('home.login')->with('success', 's');
-
+        return view('home.register');
     }
 
     public function loginUser(LoginUser $request){
-
-        // return $request->all();
 
         $user = User::where('email', $request->email)
         ->where('active', 1)

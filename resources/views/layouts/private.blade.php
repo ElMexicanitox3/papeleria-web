@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @yield('title') </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f92379971f.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
+
 
 
     <!-- Jquery -->
@@ -49,140 +49,81 @@
             color: #ffffff !important;
         }
 
-        header,
-
-        body {
-            padding-left: 300px;
+        .navbar-toggler, .n-toggler {
+          order: -1;
         }
 
-        :not(label).active {
-            color: #ffffff !important;
-            background-color: var(--active-color) !important;
-        }
-
-        .selectdMenu {
-            color: #ffffff !important;
-            background-color: var(--main-color) !important;
-        }
-
-        .selectdSubMenu, .selectdSubMenu>i.material-icons{
-            color: #ffffff !important;
-            background-color: var(--active-color) !important;
-        }
-
-        .pagination-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px; /* Puedes ajustar este margen según tus preferencias */
-        }
-
-        table.highlight>tbody>tr:hover {
-            /* background-color: var(--active-color) !important; */
-        }
-
-        table.highlight>tbody>tr {
-            /* color: white !important; <!-- you could ignore the !important here since materialize doesn't give a default color --> */
-        }
-
-        
-
-
-        @media only screen and (max-width: 992px) {
-            header, body {
-                padding-left: 0px;
-            }
-
-            .desicion-custom-modal {
-                max-width: 90%; /* Define el ancho máximo del modal */
-                width: auto !important;
-                margin: 10% auto; /* Centrar verticalmente y ajustar el margen horizontal */
-                height: auto !important;
-                max-height: 70vh; /* Limitar la altura máxima y permitir el desplazamiento si es necesario */
-            }
-        }
-
-        @media screen and (min-width: 1024px) {
-
-            .sidenav .sidenav-fixed {
-                transform: translateX(0px);
-            }
-
-            .desicion-custom-modal {
-                max-width: 30%; /* Define el ancho máximo del modal */
-                width: auto !important;
-                margin: 10% auto; /* Centrar verticalmente y ajustar el margen horizontal */
-                height: auto !important;
-                max-height: 70vh; /* Limitar la altura máxima y permitir el desplazamiento si es necesario */
-            }
-        }
     </style>
 
 </head>
 
-<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+<body>
 
-    <nav>
-        <div class="nav-wrapper blue">
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            
+            <a href="#" class="n-toggler me-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+
         </div>
     </nav>
+      
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Side Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Configuración</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+      
 
 
 
-    <ul class="sidenav sidenav-fixed" id="mobile-demo" style="transform: translateX(0%) !important">
-        <ul class="collapsible">
-            <li>
-                <a href="{{route('dashboard')}}" class="collapsible-header {{ request()->routeIs('dashboard') ? 'selectdMenu' : '' }}"><i class="material-icons">space_dashboard</i>Dashboard</A>
-            </li>
-            <li>
-                <div class="collapsible-header  {{ request()->is('enterprise/*') ? 'selectdMenu' : '' }}"><i class="material-icons">store</i>Empresa</div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li><a href="{{route('enterprise.index')}}" class="{{ request()->is('enterprise/information') ? 'selectdSubMenu' : '' }}"><i class="material-icons">info</i>Informacion</a></li>
-                        <li><a href="auto-init.html"><i class="material-icons">storefront</i>Sucursales</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">groups</i>Personal</div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li><a href="auto-init.html"><i class="material-icons">groups</i>Lista de Personal</a></li>
-                        <li><a href="auto-init.html"><i class="material-icons">person_add</i>Agregar Personal</a></li>
-                        <li><a href="auto-init.html"><i class="material-icons">storefront</i>Asignar Sucursal</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header {{ request()->is('products/*') ? 'selectdMenu' : '' }}"><i class="material-icons">shopping_cart</i>Productos</div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li><a href="{{route('brands.index')}}" class="{{ request()->is('products/brands*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">shopping_cart</i>Marcas</a></li>
-                        <li><a href="{{route('category.index')}}" class="{{ request()->is('products/category*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Categorias</a></li>
-                        <li><a href="{{route('subcategory.index')}}" class="{{ request()->is('products/subcategory*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">category</i>Subcategorias</a></li>
-                        <li><a href="{{route('products.index')}}" class="{{request()->is('products/home*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">inventory_2</i>Productos</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header {{ request()->is('storage/*') ? 'selectdMenu' : '' }}"><i class="material-icons">warehouse</i>Almacenamiento</div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li><a href="{{route('storage.index')}}" class="{{ request()->is('storage/home*') ? 'selectdSubMenu' : '' }}"><i class="material-icons">warehouse</i>Almacenes</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header logout"><i class="material-icons">logout</i>Cerrar Sesion</div>
-            </li>
-        </ul>
+      
 
+ 
+    
 
-    </ul>
-
-    <main style="flex: 1;">
+    {{-- <main style="flex: 1;">
         @yield('content')
-    </main>
+    </main> --}}
 
 
     {{-- Messages --}}
