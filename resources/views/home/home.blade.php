@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col col-12 col-sm-12 col-lg-12">
                 <img src="{{ asset('images/logo.png') }}" alt="logo" style="width: 200px;">
-                <h1 class="fw-bold ptxt">Compare, Buy, and Sell!</h1>
+                <h1 class="fw-bold ptxt">Compare, Buy, and Sell! ddx</h1>
                 <h5 class="fw-bolder">Start with us and discover the world of competitive sales</h5>
                 {{-- Register button --}}
                 <a href="{{ route('home.register') }}" id="download-button" class="btn btn-primary mt-5 mb-5">Register</a>
