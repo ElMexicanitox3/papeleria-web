@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Products\brands;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Products\brands\NewBrand;
-use App\Models\products\brands\BrandsModel;
+use App\Models\Products\brands\BrandsModel;
 use Illuminate\Http\Request;
 
 class BrandsController extends Controller

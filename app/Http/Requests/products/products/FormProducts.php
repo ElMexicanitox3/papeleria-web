@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\products\products;
+namespace App\Http\Requests\Products\Products;
 
-use App\Models\products\products\ProductModel;
+use App\Models\Products\products\ProductModel;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FormProducts extends FormRequest

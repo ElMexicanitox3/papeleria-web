@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\products\products;
+namespace App\Models\Products\products;
 
 use App\Models\Products\brands\BrandsModel;
 use App\Models\Products\category\CategoryModel;
-use App\Models\products\subcategory\SubCategoryModel;
+use App\Models\Products\subcategory\SubCategoryModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;

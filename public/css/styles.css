@@ -1,0 +1,244 @@
+/* Var with the color */
+:root {
+    /* --main-color: #2196F3; */
+    --main-color: #153d77;
+    --active-color: #64b5f6;
+}
+
+/* Change Color */
+input:focus {
+    border-bottom: 1px solid var(--main-color) !important;
+    box-shadow: 0 1px 0 0 var(--main-color) !important;
+}
+
+/* Chane after focus */
+input:focus+label {
+    color: var(--main-color) !important;
+}
+
+.btn.acept {
+    background-color: var(--main-color) !important;
+}
+
+.btn.cancel {
+    background-color: #F44336 !important;
+}
+
+.logout {
+    cursor: pointer;
+    background-color: #F44336 !important;
+    color: #ffffff !important;
+}
+
+.navbar-toggler, .n-toggler {
+    order: -1;
+}
+
+#sidebar-nav {
+    width: 160px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+}
+
+h3 {
+    font-size: 1.2375rem;
+    color: #FFF;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+/* Layout skeleton */
+
+.wrapper {
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    max-width: 250px;
+    min-width: 250px;
+    transition: all 0.35s ease-in-out;
+    z-index: 3;
+    background-color: #FFF
+}
+
+/* Sidebar collapse */
+
+#sidebar.collapsed {
+    margin-left: -250px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+}
+
+.sidebar-logo {
+    padding: 1.0rem 1.5rem;
+    background-color: var(--main-color) !important;
+}
+
+.sidebar-logo a {
+    color: #e9ecef;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    padding: 0;
+}
+
+.sidebar-header {
+    color: #adb5bd;
+    font-size: .75rem;
+    padding: 1.5rem 1.5rem .375rem;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: var(--main-color);
+    position: relative;
+    display: block;
+    font-size: 1rem;
+}
+
+.bg-body-tertiary{
+    background-color: var(--main-color) !important;
+    color: #FFF !important;
+}
+
+.sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-porfile{
+    background: #fff;
+    color: #000;
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
+}
+
+.sidebar-porfile-photo{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.sidebar-item-active {
+    background-color: #e9ecef;
+    color: #FFF;
+}
+
+.content {
+    flex: 1;
+    max-width: 100vw;
+    width: 100vw;
+}
+
+
+.porfile-name {
+    font-weight: 500!important;
+}
+
+/* Responsive */
+
+@media (min-width:768px) {
+    .content {
+        width: auto;
+    }
+}
+
+/* si es un dispositivo mantenemos el sidebar oculto */
+@media (max-width: 992px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.collapsed {
+        margin-left: 0;
+    }
+}
+
+.wrapper:after {
+    background: #f0f5fc;
+    content: " ";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+}
+
+
+.wrapper:before {
+    background: #153d77;
+    content: " ";
+    height: 266px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.header{
+    color:#fff;
+    margin-top: 3rem;
+}
+
+.header-name{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header-message{
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+/* .principal{
+    flex: 1;
+    padding: 0 1.5rem;
+    margin-top: 3rem;
+} */

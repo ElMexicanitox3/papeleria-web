@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\products\brands\BrandsController;
-use App\Http\Controllers\products\category\CategoryController;
+use App\Http\Controllers\Products\brands\BrandsController;
+use App\Http\Controllers\Products\category\CategoryController;
 use App\Http\Controllers\Products\subcategory\SubCategoryController;
 use App\Http\Controllers\Products\products\ProductsController;
 use App\Http\Controllers\enterprise\information\EnterpriseInfoController;

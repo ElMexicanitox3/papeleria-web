@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\products\products;
+namespace App\Http\Controllers\Products\Products;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\products\products\FormProducts;
+use App\Http\Requests\Products\products\FormProducts;
 use App\Models\Products\brands\BrandsModel;
 use App\Models\Products\category\CategoryModel;
-use App\Models\products\products\ProductModel;
-use App\Models\products\subcategory\SubCategoryModel;
+use App\Models\Products\products\ProductModel;
+use App\Models\Products\subcategory\SubCategoryModel;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller

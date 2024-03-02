@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Products\subcategory;
 
 use App\Models\Products\category\CategoryModel;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\products\subcategory\FormSubcategory;
-use App\Models\products\subcategory\SubCategoryModel;
+use App\Http\Requests\Products\subcategory\FormSubcategory;
+use App\Models\Products\subcategory\SubCategoryModel;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller

@@ -3,23 +3,14 @@
 
 <!-- Titulo -->
 @section('title', 'Productos')
+@section('title-header', 'Productos')
+@section('message-header', 'Aqui podras visualizar los productos')
 
 <!-- Contenido -->
 @section('content')
+    
+    <table class="table table-hover">
 
-<div class="container">
-
-    <div class="row">
-        <div class="col s12">
-            <h5 class="center-align">Productos</h5>
-            <p class="center-align">Aqui podras visualizar los productos</p>
-        </div>
-        <div class="col s12 m12">
-            @include('includes.btn-small', ['alingicon'=>'left', 'text'=>'Nuevo Producto','icon' => 'add', 'color'=> 'blue',  'href' => route('products.create')])
-        </div>
-    </div>
-
-    <table class="highlight">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -46,13 +37,15 @@
                     {{ $product->subcategory->name }}
                 </td>
                 <td>
+                    
                     @include('includes.btn-small', ['href'=>route('products.edit', $product->uuid),'icon' => 'edit', 'mesagge_tootip' => 'Editar Producto'])
 
                     @if($product->active)
-                        @include('includes.btn-small', ['icon' => 'block', 'mesagge_tootip' => 'Desactivar producto', 'color' => 'red', 'modaltrigger' => 'del'.$product->uuid])
+                        @include('includes.btn-small', ['icon' => 'block', 'mesagge_tootip' => 'Desactivar producto', 'color' => 'danger', 'modaltrigger' => 'del'.$product->uuid])
                     @else
-                        @include('includes.btn-small', ['icon' => 'check', 'mesagge_tootip' => 'Activar producto', 'color' => 'green', 'modaltrigger' => 'act'.$product->uuid])
+                        @include('includes.btn-small', ['icon' => 'check', 'mesagge_tootip' => 'Activar producto', 'color' => 'success', 'modaltrigger' => 'act'.$product->uuid])
                     @endif
+
                 </td>
             </tr>
 
@@ -74,10 +67,8 @@
 
             @endforeach
         </tbody>
+
     </table>
-
-
-</div>
 
 @endsection
 <!-- Final del contenido -->
